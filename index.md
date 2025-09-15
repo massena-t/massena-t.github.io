@@ -29,6 +29,10 @@ title: "Home - massena-t"
 
 <hr style="margin:1.5rem 0;">
 
+### Disclaimer
+
+This page is currently being built, I will try to upload some interesting research snippets in the coming weeks.
+
 <!-- - [/about/](/about/) -->
 <!-- - [/posts/](/posts/) -->
 
