@@ -31,7 +31,17 @@ title: "Home - massena-t"
 
 ### News
 
-I am honored to announce I received the Alexey Chervonenkis award for the Best Poster at the Fourteenth Symposium on Conformal and Probabilistic Prediction with Applications (COPA 2025) conference along with my brilliant coworker Léo Andéol. 
+<div style="border:1px solid #ddd;border-radius:10px;padding:1rem;">
+  <p>
+    I am honored to announce I received the <strong>Alexey Chervonenkis award</strong> for the 
+    <strong>Best Poster</strong> at the Fourteenth Symposium on Conformal and Probabilistic Prediction 
+    with Applications (COPA 2025).
+  </p>
+  <p>
+    I was fortunate to share this honor with my brilliant coworker <strong>Léo Andéol</strong>.
+  </p>
+</div>
+
 
 ### Publications
 
@@ -50,7 +60,7 @@ I am honored to announce I received the Alexey Chervonenkis award for the Best P
       This enables efficient prediction with guaranteed error rates in noisy or adversarial environments.
     </p>
     <p style="margin:.5rem 0 0 0;">
-      <a href="#" target="_blank" style="text-decoration:none;color:#0366d6;">[https://arxiv.org/abs/2506.05434]</a>
+      <a href="https://arxiv.org/abs/2506.05434" target="_blank" style="text-decoration:none;color:#0366d6;">[Paper link.]</a>
     </p>
   </div>
 
@@ -69,7 +79,7 @@ I am honored to announce I received the Alexey Chervonenkis award for the Best P
       Also presented as an invited Google Tech Talk.
     </p>
     <p style="margin:.5rem 0 0 0;">
-      <a href="#" target="_blank" style="text-decoration:none;color:#0366d6;">[https://arxiv.org/abs/2305.16202]</a>
+      <a href="https://arxiv.org/abs/2305.16202" target="_blank" style="text-decoration:none;color:#0366d6;">[Paper link.]</a>
     </p>
   </div>
 
@@ -85,7 +95,7 @@ I am honored to announce I received the Alexey Chervonenkis award for the Best P
       We implement fast and flexible parametrizations for orthogonally constrained convolutions that match the time and memory consumption of unconstrained convolutions in large batch size settings.
     </p>
     <p style="margin:.5rem 0 0 0;">
-      <a href="#" target="_blank" style="text-decoration:none;color:#0366d6;">[https://arxiv.org/abs/2501.07930]</a>
+      <a href="https://arxiv.org/abs/2501.07930" target="_blank" style="text-decoration:none;color:#0366d6;">[Paper link.]</a>
     </p>
   </div>
 
@@ -101,7 +111,7 @@ I am honored to announce I received the Alexey Chervonenkis award for the Best P
       We enable safe railway signaling detection risk control guarantees on detection confidence, localization, and classification.
     </p>
     <p style="margin:.5rem 0 0 0;">
-      <a href="#" target="_blank" style="text-decoration:none;color:#0366d6;">[https://raw.githubusercontent.com/mlresearch/v266/main/assets/andeol25a/andeol25a.pdf]</a>
+      <a href="https://raw.githubusercontent.com/mlresearch/v266/main/assets/andeol25a/andeol25a.pdf" target="_blank" style="text-decoration:none;color:#0366d6;">[Paper link.]</a>
     </p>
   </div>
 
