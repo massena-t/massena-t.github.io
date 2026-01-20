@@ -23,7 +23,7 @@ title: "Thomas Massena"
 
   <div class="pub-card">
     <h4>Fast and Flexible Robustness Certificates for Semantic Segmentation <span class="pub-venue">Pre-print</span></h4>
-    <p class="pub-authors"><em>T. Massena</em>, C. Friedrich, F. Mamalet, M. Serrurier</p>
+    <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, F. Mamalet, M. Serrurier</p>
     <p class="pub-desc">We use Lipschitz neural networks to perform certifiably robust segmentation tasks on challenging datasets such as CityScapes. Our networks are approximately 600 to 2000 times more computationally efficient at inference time. We additionally develop a full framework for the certification of complex deep learning models under arbitrary threats under two different paradigms.</p>
     <a href="https://arxiv.org/abs/2512.06010" target="_blank" class="pub-link">Paper &rarr;</a>
   </div>
