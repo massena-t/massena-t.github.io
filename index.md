@@ -16,7 +16,7 @@ title: "Thomas Massena"
 
   <div class="pub-card">
     <h4>Turbo-Muon: Accelerating Orthogonality-Based Optimization with Pre-Conditioning <span class="pub-venue">Pre-print</span></h4>
-    <p class="pub-authors">T. Boissin, <em>T. Massena</em>, F. Mamalet, M. Serrurier</p>
+    <p class="pub-authors">T. Boissin*, <em>T. Massena*</em>, F. Mamalet, M. Serrurier</p>
     <p class="pub-desc">We improve the efficiency of the costly Newton-Schulz iteration of the Muon optimizer by using a preconditioning method from the Approximately Orthogonal Layer paper from Prach et al. This allows us to conserve the impressive performance of the Muon optimizer while gaining substantial computational efficiency at scale.</p>
     <a href="https://arxiv.org/abs/2512.04632" target="_blank" class="pub-link">Paper &rarr;</a>
   </div>
