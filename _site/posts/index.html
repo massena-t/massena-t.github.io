@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title | default: site.title | default: 'Thomas Massena' }}</title>
-    <meta name="description" content="{{ site.description | default: 'PhD student working on certifiably robust deep learning' }}">
-    {% seo %}
-    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+    <title>Blog</title>
+    <meta name="description" content="Personal website">
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Blog | Thomas Massena</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Blog" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal website" />
+<meta property="og:description" content="Personal website" />
+<link rel="canonical" href="http://localhost:4000/posts/" />
+<meta property="og:url" content="http://localhost:4000/posts/" />
+<meta property="og:site_name" content="Thomas Massena" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Blog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Personal website","headline":"Blog","url":"http://localhost:4000/posts/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   </head>
   <body>
     <div class="site-container">
       <aside class="sidebar">
         <div class="sidebar-inner">
-          <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Thomas Massena" class="profile-image">
+          <img src="/assets/images/profile.jpg" alt="Thomas Massena" class="profile-image">
           <h1 class="profile-name">Thomas Massena</h1>
           <p class="profile-bio">PhD student at IRIT and SNCF, working on certifiably robust deep learning.</p>
 
           <nav class="sidebar-nav">
-            <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-            <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a>
+            <a href="/" >Home</a>
+            <a href="/about/" >About</a>
           </nav>
 
           <div class="sidebar-social">
@@ -36,10 +52,21 @@
       </aside>
 
       <main class="main-content">
-        {{ content }}
+        <h1 id="blog">Blog</h1>
+
+<ul>
+
+  <li>
+    <a href="/blog/2025/09/15/hello-world.html">Hello, world</a>
+    <small> — Sep 15, 2025</small>
+  </li>
+
+</ul>
+
+
 
         <footer class="site-footer">
-          <p>&copy; {{ 'now' | date: "%Y" }} Thomas Massena</p>
+          <p>&copy; 2026 Thomas Massena</p>
         </footer>
       </main>
     </div>

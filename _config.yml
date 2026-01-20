@@ -1,0 +1,12 @@
+title: Thomas Massena
+description: Personal website
+baseurl: ""
+url: "https://massena-t.github.io"
+
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
