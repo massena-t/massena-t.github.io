@@ -6,9 +6,8 @@ categories: [blog]
 layout: posts
 ---
 
-# Using Schatten-p norms to dynamically interpolate between Adam and Muon
-Thomas MASSENA
-[Link to repository](https://github.com)
+# Using Schatten-p norms to dynamically interpolate between SGD and Muon
+Thomas MASSENA | [Link to repository](https://github.com/massena-t/adaptative-ns)
 
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
@@ -252,7 +251,7 @@ While this whole study show that Muon orthogonalization can be made adaptative. 
 - Deriving a the proper $\eta_{t,p}$ empirically or theoretically motivated learning rate scheduling in terms of $t$ and $p$ could be worthwile. 
 - Improving approximation methods for the optimal $p$ computations would have runtime and stability benefits.
 
-I guess I might be working on this in the following weeks.
+I might be working on this in the following weeks.
 
 ### Cite this blog
 
@@ -262,6 +261,7 @@ If you found this small write up pertinent to your research, please consider cit
 @article{massena_pmuon,
   title={Generalizing Muon to Schatten-p norms},
   author={Thomas Massena},
+  url={http://massena-t.github.io/blog/2026/02/19/schatten-muon.html},
   year={2026}
 }
 ```

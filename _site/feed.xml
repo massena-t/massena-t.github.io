@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-21T09:29:13+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Generalizing Muon to Schatten-p norms</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Generalizing Muon to Schatten-p norms" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="using-schatten-p-norms-to-dynamically-interpolate-between-adam-and-muon">Using Schatten-p norms to dynamically interpolate between Adam and Muon</h1>
-<p>Thomas MASSENA
-<a href="https://github.com">Link to repository</a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-21T13:30:10+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Generalizing Muon to Schatten-p norms</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Generalizing Muon to Schatten-p norms" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="using-schatten-p-norms-to-dynamically-interpolate-between-sgd-and-muon">Using Schatten-p norms to dynamically interpolate between SGD and Muon</h1>
+<p>Thomas MASSENA | <a href="https://github.com/massena-t/adaptative-ns">Link to repository</a></p>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
 <strong>TLDR</strong>: Using an adaptive scheme Newton-Schulz allows a theoretically principled way to choose between SGD-<em>esque</em> or Muon-<em>esque</em> weight updates.
@@ -216,7 +215,7 @@ L_2 &amp;= \frac{1}{n}\,\|A\|_F^2
   <li>Improving approximation methods for the optimal $p$ computations would have runtime and stability benefits.</li>
 </ul>
 
-<p>I guess I might be working on this in the following weeks.</p>
+<p>I might be working on this in the following weeks.</p>
 
 <h3 id="cite-this-blog">Cite this blog</h3>
 
@@ -225,6 +224,7 @@ L_2 &amp;= \frac{1}{n}\,\|A\|_F^2
 <div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@article</span><span class="p">{</span><span class="nl">massena_pmuon</span><span class="p">,</span>
   <span class="na">title</span><span class="p">=</span><span class="s">{Generalizing Muon to Schatten-p norms}</span><span class="p">,</span>
   <span class="na">author</span><span class="p">=</span><span class="s">{Thomas Massena}</span><span class="p">,</span>
+  <span class="na">url</span><span class="p">=</span><span class="s">{http://massena-t.github.io/blog/2026/02/19/schatten-muon.html}</span><span class="p">,</span>
   <span class="na">year</span><span class="p">=</span><span class="s">{2026}</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><category term="optimization" /><summary type="html"><![CDATA[Using Schatten-p norms to dynamically interpolate between Adam and Muon Thomas MASSENA Link to repository]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name></name></author><category term="blog" /><category term="optimization" /><summary type="html"><![CDATA[Using Schatten-p norms to dynamically interpolate between SGD and Muon Thomas MASSENA | Link to repository]]></summary></entry></feed>
