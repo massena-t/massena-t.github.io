@@ -1,5 +1,5 @@
 ---
-title: "Using Schatten-p norms to dynamically interpolate between Adam and Muon"
+title: "Generalizing Muon to Schatten-p norms"
 date: 2026-02-19 12:00:00 +0100
 tags: [optimization]
 categories: [blog]
@@ -8,45 +8,49 @@ layout: posts
 
 # Using Schatten-p norms to dynamically interpolate between Adam and Muon
 Thomas MASSENA
+[Link to repository](https://github.com)
+
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
-TLDR: Using an adaptive scheme allows a theoretically principled way to choose Adam-esque or Muon-esque weight updates.
+<strong>TLDR</strong>: Using an adaptive scheme Newton-Schulz allows a theoretically principled way to choose between SGD-<em>esque</em> or Muon-<em>esque</em> weight updates.
 </div>
 
 ### A Bit of Context
 
-Since 2014-ish, the Adam optimizer has become the de-facto gradient-based optimization method for Deep Neural Networks (DNNs). Recently however, a concurrent optimizer named Muon has made headlines for its consistent gains over Adam in a variety of different scenarios. Muon uses the following update rule on 2D parameters after momentum accumulation:
+Since 2014-ish, the Adam optimizer has become the de-facto gradient-based optimization method for Deep Neural Networks (DNNs). Recently however, a concurrent optimizer named Muon has made headlines for its consistent gains over Adam in a variety of different scenarios. 
+
+Muon uses the following update rule on 2D parameters after momentum accumulation:
 
 $$
  W_{t+1} = W_t - \eta_t . \mathrm{PolarFactor}(M_t)
 $$
 
-with $M_t$ the update after momentum accumulation of Singular Value Decomposition (SVD) $U.\Sigma.V^T$. The $\mathrm{PolarFactor}$ function returns to the closest orthogonal matrix to $M_t$, i.e.: 
+with $M_t \in \mathbb{R}^{m,n}$ the update after momentum accumulation, of Singular Value Decomposition (SVD): $U.\Sigma.V^T$, with $U$ and $V$ orthogonal (or semi-orthogonal) matrices. The $\mathrm{PolarFactor}$ function returns the closest orthogonal matrix to $M_t$, i.e.: 
 
 $$ 
  \mathrm{PolarFactor}(M_t) = U.V^T
 $$
 
-which an be efficiently approximated via a Newton-Schulz iterative scheme. Also, as described in Bernstein and Newhouse's "Old Optimizer, New Norm" (OONN) paper. Muon (and Shampoo), without E.M.A correspond to the scaled solution of the following steepest descent direction problem:
+Importantly, the computation of the Polar Factor can be efficiently approximated via a Newton-Schulz iterative scheme. And, as described in Bernstein and Newhouse's "Old Optimizer, New Norm" paper. Muon (and Shampoo), without E.M.A correspond to scaled solutions of the following steepest descent direction problem:
 
 $$
  \mathrm{argmin}_{\Delta G \in \mathbb{R}^{m,n}} \langle G, \Delta W \rangle_F + \frac{\lambda}{2} . \| \Delta W \|_2^2.
 $$
 
-meaning that the Muon udpate is a spectral descent direction under the maximum spectral norm update constraint (controlled by $\lambda$).
+meaning that the Muon udpate is a spectral descent direction under the maximum spectral norm update constraint (controlled by sharpness parameter $\lambda$).
 
 ### Interpolating Between SGD and Muon
 
 Now, given an unpreconditioned update $M_t$ of SVD $U.\Sigma.V^T$, let's propose the following update rule:
 
 $$
- W_{t+1} = W_t - \eta_t . ( U.\Sigma^{1/p}.V^T ), \forall \ p \in [1, \infty),
+ W_{t+1} = W_t - \eta_t . \left[ U.\Sigma^{1/p}.V^T \right], \forall \ p \in [1, \infty),
 $$
 
-which recovers the SGD update rule when $p=1$ and Muon when $p \rightarrow \infty$. 
+which recovers the SGD update rule when $p=1$ and approaches Muon at exponential speed when $p \rightarrow \infty$. 
 
 
-Using the OONN framework, we find this update rule to be a steepest descent direction as it corresponds to the scaled version of solution to the following problem:
+Using the "Old Optimizer, New Norm" framing, we find this update rule to be a steepest descent direction as it corresponds to the scaled version of solution to the following problem:
 
 $$
  \mathrm{argmin}_{\Delta W \in \mathbb{R}^{m,n}} \langle G, \Delta W \rangle_F + \frac{\lambda}{p+1}. \| \Delta W \|_{p+1}^{p+1}
@@ -77,13 +81,13 @@ $$
 -\sigma_i + \lambda s_i^p = 0 \implies s_i = \left(\frac{\sigma_i}{\lambda}\right)^{1/p}
 $$
 
-<p>Absorbing the constant <em>(1/&lambda;)<sup>1/p</sup></em> into the learning rate <em>&eta;<sub>t</sub></em>, we are left with the step's singular values <em>s<sub>i</sub> &prop; &sigma;<sub>i</sub><sup>1/p</sup></em>. Reconstructing the matrix with these new singular values yields the <em>U &Sigma;<sup>1/p</sup> V<sup>T</sup></em> update. The behavior is straightforward:</p>
+<p>Absorbing the constant <em>(1/&lambda;)<sup>1/p</sup></em> into the learning rate <em>&eta;<sub>t</sub></em>, we are left with the step's singular values <em>s<sub>i</sub> &prop; &sigma;<sub>i</sub><sup>1/p</sup></em>. Reconstructing the matrix with these new singular values yields the <em>U &Sigma;<sup>1/p</sup> V<sup>T</sup></em> update.</p>
 
 </div>
 
 ### Efficient Approximation
 
-Well that's very cool, we now have a way to vary the value of $p$. However, how do we impose that in practice without using costly SVD computations ? The answer is actually quite easy. Newton-Schulz, again, for the win. The only mechanism we would really need to tune being the coefficient computation method. 
+Well, we now have a more general formulation of steepest descent directions that recovers both Muon and SGD. The main question now is: *can I compute $U.\Sigma^{1/p}.V^T$ efficiently ? How do we impose that in practice without using costly SVD computations ? The answer is actually quite easy. Newton-Schulz, again, for the win. Indeed, simply changing Newton-Schulz's coefficients suffices to approximate $U.\Sigma^{1/p}.V^T$ efficiently. 
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #c1c1e1;">
 Note: For more insights on Newton-Schulz coefficient computation, you can refer to <a href="https://leloykun.github.io/ponder/muon-opt-coeffs/" target="_blank">Franz Cesista's method</a> or even the <a href="https://arxiv.org/abs/2506.10935" target="_blank">Grishina (CANS)</a> or <a href="https://arxiv.org/abs/2505.16932" target="_blank">Amsel (Polar Express)</a> papers.
@@ -97,9 +101,11 @@ $$
  \min_{a,b,c \in \mathbb{R}^3} \int_0^1 (a . x + b . x^3 + c . x^5 - x^{1/p}) . dx \quad \mathrm{s.t} \quad a+b+c = 1.
 $$
 
-For better approximation performance, we can perform $N$ Newton-Schulz approximation steps and approximate $x_{t+1} = x_{t}^{p^{-1/N}}$ at each step. Anyways, this can be solved really efficiently using Lagrange multipliers. *This really simple method could probably benefit from further improving, for the sake of conciseness however we'll keep it at that*. 
+For better approximation performance, we can perform $N$ Newton-Schulz approximation steps and approximate $x_{t+1} = x_{t}^{p^{-1/N}}$ at each step. Anyways, this can be solved really efficiently using Lagrange multipliers and solving this takes up negligeable time wrt a gradient step for a decently sized model. 
 
-Now, we have a toolbox to compute Schatten-p norm update directions efficiently. Remains the most important question:
+*This really simple method could probably benefit from further improving, for the sake of conciseness however we'll keep it at that*. 
+
+Now, we have a toolbox to compute Schatten-p norm update directions efficiently. Remains the key question:
 
 <figure style="text-align: center;">
   <img src="/assets/images/pMuon/y-tho.jpg"
@@ -119,7 +125,7 @@ $$
  \mathcal{L}(W) = \frac{1}{2n} . \| W. A - Y \|_F^2.
 $$
 
-where $W$ is the weight matrix, $A$ the post activation matrix and $Y$ the random feature to be regressed. A simple Taylor-expansion yields, for any update $\delta W \in \mathbb{R}^{m,n}$, we have:
+where $W$ is the weight matrix, $A$ the post activation matrix and $Y$ the random feature to be regressed. A simple Taylor-expansion yields, for any update $\delta W \in \mathbb{R}^{m,n}$, that:
 
 $$
  \mathcal{L}(W + \delta W) = \mathcal{L} + \langle \nabla \mathcal{L}(W), \delta W \rangle + \frac{1}{2n} \| \delta W . A \|_F^2.
@@ -142,7 +148,7 @@ L_2 &= \frac{1}{n}\,\|A\|_F^2
 \end{aligned}
 $$
 
-Ideally, we want to find a formula $f(G, A) = p$, based on gradients and activations, to use the optimal $p$ value for our update. Thus garanteeing better performance ! To this end, we rely on the generalized Hölder inequality, which states, $\exists k \in [1, \infty)$, s.t:
+Ideally, we want to find a formula $f(G, A) = p$, based on gradients and activations, that yields the optimal $p$ value to use for this step's update. Therefore offering a theoretical objective for better performance ! To this end, we rely on the generalized Hölder inequality, which states, $\exists k \in [1, \infty)$, s.t:
 
 $$
  \| \delta W . A \|_F \leq \| \delta G \|_{p+1} . \| A \|_k
@@ -159,34 +165,34 @@ $$
 \end{aligned}
 $$
 
-with $1 + 1/p$ the dual norm of $p+1$-th Schatten norm. Which gives the following optimality condition:
+with $1 + 1/p$ the dual norm of $(p+1)$-th Schatten norm. Which gives the following optimality condition:
 
 $$
  p^* = \mathrm{argmax}_{p \in [1, \infty)} \left( \frac{\| G \|_{1 + 1/p}}{ \| A \|_{\frac{2 (p+1)}{p-1}}} \right)
 $$
 
-Nice ! We now have sort of an "*optimality*" condition on the value of $p$ for one step ! **There is a problem however, this computation requires knowing the full singular value spectral of** $A$ **and** $G$.
+Nice ! We now have sort of a layerwise "*optimality*" condition on the value of $p$ for one step ! **There is a problem however, this computation requires knowing the full singular value spectral of** $A$ **and** $G$.
 
 ### Computing this Efficiently
 
 Right now, anyone who has already trained big neural networks and ran into runtime or memory issues is probably cringing, knowing that the computation of the full singular value spectra of both the raw gradient and the post-activations is computational suicide.
 
 <figure style="text-align: center;">
-  <img src="/assets/images/clenched-fist.png"
+  <img src="/assets/images/pMuon/clenched-fist.png"
        style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
   <figcaption style="margin-top: 8px; font-size: 1.2em; color: #666;"> <em> Probably your initial reaction ? </em>
   </figcaption>
 </figure>
 
 Luckily, several elements can mitigate the computational overhead of using this method. Without going into too much detail:
-(i) we can run the $p$ updates every N steps (ii) we can run the computation of our optimal $p$ using subsampled $G$ and $A$ matrices with an extra spectral norm computation. To counteract the potentially high variance of our singular value estimators, we use exponential moving average of the singular values across updates, then we compute the $p$ update.
+(i) we can run the $p$ updates every N steps (ii) we can run the computation of our optimal $p$ using subsampled $G$ and $A$ matrices with an extra spectral norm computation. (iii) we can group layers into sequential chunks where we will compute the mean optimal $p$ value to update with. To counteract the potentially high variance of our singular value estimators, we use exponential moving average of the singular values across updates, then we compute the $p$ update.
 
 Also, finally, our iterative scheme to update $p$ can be run on a separate process from the training run, which will update $p$ between training steps when a new $p$ value is recovered.
 
-So to summarize, if we subsample the gradient and activation matrices by a factor $S$, the extra overhead required by our algorithm is:
+So to summarize, if we subsample the gradient and activation matrices of $L$ sequential chunks by a factor $S$, the extra overhead required by our algorithm is:
 - **Runtime**: None if the $p$ update does not hold up the training process.
-- **Memory**: requires storing a $S \times \mathrm{m,n}$ vector containing randomly sampled singular values.
-- **Bandwidth**: In a multi-gpu setting the subsampled singular value vectors should probably be synchronised.
+- **Memory**: requires storing a $L \times S \times \mathrm{min}(m,n)$ vector containing randomly sampled singular values.
+- **Bandwidth**: In a multi-gpu setting the subsampled singular value vectors should probably be synchronised across devices.
 
 In practice, if the optimal $p$ value is a relatively stable quantity, the fact that it's update lags behind the training process should not be too much of an issue. 
 
@@ -215,18 +221,48 @@ Our algorithm takes up the following form:
 To check out the validity of our implementation, we run a gridsearch on a ResMLP neural network on the CIFAR-10 dataset. 
 
 <figure style="text-align: center;">
-  <img src="/assets/images/pMuon/resmpl_cifar.png"
+  <img src="/assets/images/pMuon/resmlp_cifar.png"
        style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
-  <figcaption style="margin-top: 8px; font-size: 1.4em; color: #666;">
+  <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
     <strong> ResMLP train loss on cifar-10 after 50 epochs, using 3 different random seeds. </strong>
   </figcaption>
 </figure>
 
-So yay I guess, our version is competitive ! Now let's get to the fun stuff. 
+So yay I guess, our version is competitive ! For reference, tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
 
-Given that our optimizer is now adaptative, what insights do we recover about the optimal $p$ update across layers. For example, on that same ResMLP network, we notice:
+Given that our optimizer is now adaptative, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:
+
+<figure style="text-align: center;">
+  <img src="/assets/images/pMuon/optimal_p_values_resmlp.png"
+       style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
+    <strong> The optimal p-value across layers can vary quite strongly along the depth of the ResMLP network, while staying stable. </strong>
+  </figcaption>
+</figure>
+
+This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters.
+
+**More or less related parallel:** Although this is maybe unrelated, the relationship between neural network depth and optimal gradient rank can be somewhat related to the complexity-theory driven work of <a href="https://www.arxiv.org/pdf/2407.06076" target="_blank">Fel et al., 2024<a/>, where the authors show that higher complexity features are learned in the later layers of a ResNet50 model. This seems like this could be two sides of the same coin, or at least remotely related ?
 
 
-### References
+### Limitations and Opportunities
 
+While this whole study show that Muon orthogonalization can be made adaptative. I believe the following elements could still be improved:
+- The coefficient computation method could probably be improved via Chebyshev-type polynomial algorithms (see the Amsel et al. & Grishina et al. papers).
+- Deriving a the proper $\eta_{t,p}$ empirically or theoretically motivated learning rate scheduling in terms of $t$ and $p$ could be worthwile. 
+- Improving approximation methods for the optimal $p$ computations would have runtime and stability benefits.
+
+I guess I might be working on this in the following weeks.
+
+### Cite this blog
+
+If you found this small write up pertinent to your research, please consider citing.
+
+```bibtex
+@article{massena_pmuon,
+  title={Generalizing Muon to Schatten-p norms},
+  author={Thomas Massena},
+  year={2026}
+}
+```
 
