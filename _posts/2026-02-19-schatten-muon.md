@@ -311,6 +311,7 @@ While this whole study shows that Muon orthogonalization can be made adaptive. I
 - Deriving the proper $\eta_{t,p}$ empirically or theoretically motivated learning rate scheduling in terms of $t$ and $p$ could be worthwhile. 
 - Improving approximation methods for the optimal $p$ computations would have runtime and stability benefits.
 - Adding second order momentum that depends on the optimal $p$ value ? 
+- Investigating whether the optimal $p$ derived under the random feature regression framework remains well-suited when applied to the non-convex, multi-layer dynamics of deep neural network training is still an open question.
 
 I might be working on this in the following weeks.
 
