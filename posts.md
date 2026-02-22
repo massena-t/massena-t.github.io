@@ -1,10 +1,10 @@
 ---
-title: "Blog"
+title: "Blogposts"
 permalink: /posts/
 layout: posts
 ---
 
-# Blog
+# My Latest Blogposts
 
 <ul>
 {% for post in site.posts %}
