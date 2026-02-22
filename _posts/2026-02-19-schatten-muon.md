@@ -1,5 +1,5 @@
 ---
-title: "Generalizing Muon to Schatten-p norms"
+title: "Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon"
 date: 2026-02-19 12:00:00 +0100
 tags: [optimization]
 categories: [blog]
