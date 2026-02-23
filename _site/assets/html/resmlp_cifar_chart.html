@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 20px;
+  }
+  .container {
+    width: 100%; max-width: 1200px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 32px 28px 24px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.3);
+  }
+  .title {
+    font-weight: 700; font-size: 22px; color: #f0f0f0;
+    text-align: center; letter-spacing: -0.02em; margin-bottom: 2px;
+  }
+  .subtitle {
+    font-size: 13px; color: rgba(255,255,255,0.45);
+    text-align: center; margin-bottom: 12px;
+  }
+  .legend {
+    display: flex; justify-content: center; gap: 28px;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-swatch {
+    width: 16px; height: 3px; border-radius: 2px; position: relative;
+  }
+  .legend-swatch::after {
+    content: ''; position: absolute;
+    width: 8px; height: 8px; border-radius: 50%;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: inherit; border: 2px solid #1a1a2e;
+  }
+  .legend-label {
+    font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 500;
+  }
+  .panels { display: flex; gap: 16px; }
+  .panel { flex: 1; min-width: 0; }
+  .panel-title {
+    font-weight: 600; font-size: 15px;
+    color: rgba(255,255,255,0.85); text-align: center;
+    margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  canvas { width: 100% !important; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="title">Training & Evaluation Metrics vs Learning Rate</div>
+  <div class="subtitle">Mean ± std over 3 random seeds</div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#2563eb"></div>
+      <span class="legend-label">Muon</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#dc2626"></div>
+      <span class="legend-label">pMuon (large N and S)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#16a34a"></div>
+      <span class="legend-label">pMuon (small N and S)</span>
+    </div>
+  </div>
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-title">Train Loss</div>
+      <canvas id="chart0"></canvas>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Train Accuracy</div>
+      <canvas id="chart1"></canvas>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Test Accuracy</div>
+      <canvas id="chart2"></canvas>
+    </div>
+  </div>
+</div>
+<script>
+const lrs = ["0.005", "0.01", "0.02"];
+const colors = ["#2563eb", "#dc2626", "#16a34a"];
+const names = ["Muon", "pMuon (large N and S)", "pMuon (small N and S)"];
+
+const panelData = [
+  {
+    means: [
+      [0.156912, 0.109905, 0.153186],
+      [0.212578, 0.117838, 0.133226],
+      [0.193934, 0.113229, 0.139061],
+    ],
+    stds: [
+      [0.014809, 0.006446, 0.005638],
+      [0.021762, 0.007316, 0.004467],
+      [0.019257, 0.003822, 0.005533],
+    ],
+    yLabel: "Train Loss",
+    decimals: 4,
+  },
+  {
+    means: [
+      [94.6299, 96.2217, 94.7129],
+      [92.6777, 95.9681, 95.4229],
+      [93.3102, 96.1380, 95.2451],
+    ],
+    stds: [
+      [0.5483, 0.2491, 0.2089],
+      [0.7656, 0.2748, 0.1678],
+      [0.7172, 0.1293, 0.1992],
+    ],
+    yLabel: "Train Accuracy (%)",
+    decimals: 2,
+  },
+  {
+    means: [
+      [86.35,  86.7767, 85.7333],
+      [85.80,  87.1300, 86.4900],
+      [86.13,  87.0400, 86.3233],
+    ],
+    stds: [
+      [0.1709, 0.1528, 0.1457],
+      [0.3559, 0.3400, 0.1706],
+      [0.3000, 0.1300, 0.0737],
+    ],
+    yLabel: "Test Accuracy (%)",
+    decimals: 2,
+  },
+];
+
+/* ── Error-bar plugin ─────────────────────────────────────────── */
+const errorBarPlugin = {
+  id: "errorBars",
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      if (!ds.errorBars) return;
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((point, i) => {
+        const err = ds.errorBars[i];
+        if (err == null) return;
+        const { x, y } = point.getProps(["x", "y"]);
+        const yScale = chart.scales.y;
+        const val = ds.data[i];
+        const yTop = yScale.getPixelForValue(val + err);
+        const yBot = yScale.getPixelForValue(val - err);
+        const cap = 5;
+        ctx.save();
+        ctx.strokeStyle = ds.borderColor;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.65;
+        ctx.beginPath();
+        ctx.moveTo(x, yTop); ctx.lineTo(x, yBot);
+        ctx.moveTo(x - cap, yTop); ctx.lineTo(x + cap, yTop);
+        ctx.moveTo(x - cap, yBot); ctx.lineTo(x + cap, yBot);
+        ctx.stroke();
+        ctx.restore();
+      });
+    });
+  },
+};
+Chart.register(errorBarPlugin);
+
+/* ── Build charts ─────────────────────────────────────────────── */
+panelData.forEach((p, idx) => {
+  const ctx = document.getElementById("chart" + idx).getContext("2d");
+
+  const datasets = names.map((name, i) => ({
+    label: name,
+    data: p.means[i],
+    errorBars: p.stds[i],
+    borderColor: colors[i],
+    backgroundColor: colors[i],
+    borderWidth: 2.5,
+    pointRadius: 5.5,
+    pointBackgroundColor: colors[i],
+    pointBorderColor: "#1a1a2e",
+    pointBorderWidth: 2,
+    pointHoverRadius: 7,
+    pointHoverBorderColor: "#ffffff",
+    pointHoverBorderWidth: 2,
+    tension: 0,
+    fill: false,
+  }));
+
+  new Chart(ctx, {
+    type: "line",
+    data: { labels: lrs, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0.95,
+      animation: { duration: 600, easing: "easeOutQuart" },
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "#1a1a2e",
+          borderColor: "rgba(255,255,255,0.12)",
+          borderWidth: 1,
+          titleFont: { family: "'IBM Plex Mono'", size: 12, weight: "600" },
+          bodyFont: { family: "'IBM Plex Mono'", size: 11 },
+          titleColor: "#fff",
+          bodyColor: "#e0e0e0",
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            title: (items) => "lr = " + items[0].label,
+            label: (item) => {
+              const std = item.dataset.errorBars[item.dataIndex];
+              return " " + item.dataset.label + ": " +
+                     item.raw.toFixed(p.decimals) + " \u00B1 " +
+                     std.toFixed(p.decimals);
+            },
+            labelColor: (item) => ({
+              borderColor: item.dataset.borderColor,
+              backgroundColor: item.dataset.borderColor,
+              borderWidth: 2, borderRadius: 2,
+            }),
+          },
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            display: true, text: "Learning Rate",
+            color: "rgba(255,255,255,0.5)",
+            font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+            padding: { top: 8 },
+          },
+          ticks: {
+            color: "rgba(255,255,255,0.55)",
+            font: { family: "'IBM Plex Mono'", size: 11 },
+          },
+          grid: { color: "rgba(255,255,255,0.06)" },
+          border: { color: "rgba(255,255,255,0.12)" },
+        },
+        y: {
+          title: {
+            display: true, text: p.yLabel,
+            color: "rgba(255,255,255,0.5)",
+            font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+            padding: { bottom: 8 },
+          },
+          ticks: {
+            color: "rgba(255,255,255,0.55)",
+            font: { family: "'IBM Plex Mono'", size: 11 },
+          },
+          grid: { color: "rgba(255,255,255,0.06)", borderDash: [3, 3] },
+          border: { color: "rgba(255,255,255,0.12)" },
+        },
+      },
+    },
+  });
+});
+</script>
+</body>
+</html>

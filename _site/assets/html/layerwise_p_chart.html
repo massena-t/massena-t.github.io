@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 20px;
+  }
+  .container {
+    width: 100%; max-width: 920px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 32px 28px 24px;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.3);
+  }
+  .title {
+    font-weight: 700; font-size: 22px; color: #f0f0f0;
+    text-align: center; letter-spacing: -0.02em; margin-bottom: 2px;
+  }
+  .subtitle {
+    font-size: 13px; color: rgba(255,255,255,0.45);
+    text-align: center; margin-bottom: 16px;
+  }
+  .legend {
+    display: flex; justify-content: center; gap: 6px 20px;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 7px;
+    cursor: pointer; padding: 2px 0; transition: opacity 0.2s;
+  }
+  .legend-item.dimmed { opacity: 0.25; }
+  .legend-line {
+    width: 18px; height: 0; border-top: 2.5px solid;
+    flex-shrink: 0;
+  }
+  .legend-line.dashed { border-top-style: dashed; }
+  .legend-label {
+    font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace; white-space: nowrap;
+  }
+  .annotation {
+    font-size: 11px; color: rgba(255,255,255,0.35); text-align: center;
+    margin-top: 10px; font-family: 'IBM Plex Mono', monospace;
+  }
+  .annotation span { color: rgba(255,255,255,0.55); }
+  canvas { width: 100% !important; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="title">Optimal p* Value Across Layers</div>
+  <div class="subtitle">Single seed · log scale · click legend to toggle</div>
+  <div class="legend" id="legend"></div>
+  <canvas id="chart"></canvas>
+  <div class="annotation">
+    <span>p → 1</span> = SGD-like &nbsp;·&nbsp; <span>p → ∞</span> = Muon-like &nbsp;·&nbsp; p<sub>max</sub> = 650
+  </div>
+</div>
+<script>
+const layerConfig = [
+  { key: "to_patch_embedding.0.weight", label: "Patch Embed",    color: "#f59e0b", dash: false },
+  { key: "blocks.0.channel_mlp.net.0.weight", label: "Block 0 · fc1", color: "#60a5fa", dash: false },
+  { key: "blocks.0.channel_mlp.net.2.weight", label: "Block 0 · fc2", color: "#60a5fa", dash: true },
+  { key: "blocks.2.channel_mlp.net.0.weight", label: "Block 2 · fc1", color: "#f87171", dash: false },
+  { key: "blocks.2.channel_mlp.net.2.weight", label: "Block 2 · fc2", color: "#f87171", dash: true },
+  { key: "blocks.4.channel_mlp.net.0.weight", label: "Block 4 · fc1", color: "#4ade80", dash: false },
+  { key: "blocks.4.channel_mlp.net.2.weight", label: "Block 4 · fc2", color: "#4ade80", dash: true },
+  { key: "mlp_head.weight",                   label: "Classifier",    color: "#c084fc", dash: false },
+];
+
+const rawLayers = {"to_patch_embedding.0.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[4.41,5.11,5.14,5.38,6.01,5.87,6.65,7.04,6.9,6.87,7.58,7.48,7.46,7.33,7.48,7.68,7.34,7.44,7.03,7.34,7.07,7.19,7.04,7.28,7.23,7.61,7.87,7.59,8.03,7.81,7.51,8.15,8.38,8.27,7.99,8.41,8.69,8.57,8.5,8.38,8.64,8.38,8.74,8.5,8.07,7.89,8.22,8.36]},"blocks.0.channel_mlp.net.0.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[5.66,5.47,4.62,3.97,3.57,3.24,3.11,3.01,2.93,2.85,2.84,2.82,2.84,2.85,2.83,2.84,2.84,2.88,2.9,2.9,2.92,2.95,3.0,3.04,3.04,3.07,3.04,3.06,3.09,3.12,3.13,3.19,3.19,3.19,3.19,3.2,3.2,3.19,3.19,3.22,3.21,3.19,3.24,3.23,3.21,3.23,3.24,3.23]},"blocks.0.channel_mlp.net.2.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[6.94,7.0,6.64,6.39,6.58,6.58,7.0,7.44,7.96,8.21,8.6,9.19,9.59,9.97,10.13,10.42,10.84,11.11,11.35,11.58,11.53,11.81,12.38,12.56,12.64,12.73,12.85,12.98,13.45,13.35,13.73,13.86,13.86,13.81,13.58,13.97,14.03,14.2,14.39,14.77,14.9,14.87,15.0,14.92,14.94,14.62,15.07,15.0]},"blocks.2.channel_mlp.net.0.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[4.81,4.73,5.63,6.96,8.74,10.51,14.19,20.05,32.71,75.18,649.55,648.79,649.63,649.58,649.81,649.98,649.99,649.85,649.76,649.56,649.6,650.0,649.69,649.8,649.79,649.8,650.0,649.6,649.94,649.96,649.96,649.96,649.96,649.85,649.27,649.27,649.58,649.81,649.96,649.68,650.0,649.96,649.86,649.99,649.74,649.75,649.96,649.58]},"blocks.2.channel_mlp.net.2.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[5.56,6.0,6.53,6.54,6.83,6.8,7.18,7.57,7.99,8.45,8.79,9.5,10.14,10.92,11.47,11.9,12.35,12.64,13.28,13.99,14.6,14.55,14.92,15.18,15.34,16.22,15.99,16.39,16.72,17.24,17.7,17.69,18.02,18.14,17.87,18.42,18.94,19.58,20.04,20.31,20.05,20.04,20.73,20.61,20.73,20.67,21.01,21.11]},"blocks.4.channel_mlp.net.0.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[4.66,5.42,6.8,8.69,13.87,34.43,649.79,649.71,649.79,649.98,649.75,650.0,650.0,649.96,649.79,649.79,649.79,649.75,649.96,649.81,649.79,650.0,649.81,649.96,649.58,649.79,650.0,649.8,649.96,650.0,649.94,649.89,649.79,650.0,649.84,649.96,649.96,649.89,649.96,649.96,649.74,649.77,649.79,649.79,649.96,649.96,649.79,649.86]},"blocks.4.channel_mlp.net.2.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[4.98,5.85,7.02,7.99,9.98,11.82,17.56,41.22,649.22,649.68,649.86,649.68,648.16,649.94,649.79,649.79,649.79,649.55,649.79,649.99,649.81,649.68,649.85,649.6,649.68,649.81,649.96,649.79,649.99,649.96,649.81,649.35,649.96,649.76,649.76,649.79,649.94,649.99,649.63,650.0,649.79,649.55,649.89,649.99,649.76,649.56,649.89,649.79]},"mlp_head.weight":{"steps":[2,5,8,11,14,17,20,23,26,29,32,35,39,42,45,48,51,54,57,60,63,66,69,72,76,79,82,85,88,91,94,97,100,103,106,109,113,116,119,122,125,128,131,134,137,140,143,146],"means":[639.31,16.11,8.99,7.23,7.14,6.43,6.1,5.86,5.47,5.26,5.0,4.96,4.84,4.71,4.66,4.51,4.44,4.02,4.25,4.25,4.24,4.03,4.03,4.16,4.05,4.1,4.3,4.1,4.08,4.14,4.09,4.07,4.18,4.14,4.05,3.98,3.98,4.13,4.12,4.13,4.17,4.15,4.1,4.14,4.15,3.98,4.12,4.08]}};
+
+const steps = rawLayers["to_patch_embedding.0.weight"].steps;
+
+const datasets = layerConfig.map((cfg) => {
+  const d = rawLayers[cfg.key];
+  return {
+    label: cfg.label,
+    data: d.means,
+    borderColor: cfg.color,
+    backgroundColor: cfg.color,
+    borderWidth: 2.2,
+    borderDash: cfg.dash ? [6, 3] : [],
+    pointRadius: 1.5,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: cfg.color,
+    pointHoverBorderColor: "#1a1a2e",
+    pointHoverBorderWidth: 2,
+    tension: 0.3,
+    fill: false,
+  };
+});
+
+const ctx = document.getElementById("chart").getContext("2d");
+const chart = new Chart(ctx, {
+  type: "line",
+  data: { labels: steps, datasets },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 1.65,
+    animation: { duration: 600, easing: "easeOutQuart" },
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: "#1a1a2e",
+        borderColor: "rgba(255,255,255,0.12)",
+        borderWidth: 1,
+        titleFont: { family: "'IBM Plex Mono'", size: 12, weight: "600" },
+        bodyFont: { family: "'IBM Plex Mono'", size: 10.5 },
+        titleColor: "#fff",
+        bodyColor: "#e0e0e0",
+        padding: 12,
+        cornerRadius: 8,
+        callbacks: {
+          title: (items) => "Step " + items[0].label,
+          label: (item) => " " + item.dataset.label + ":  p = " + item.raw.toFixed(1),
+          labelColor: (item) => ({
+            borderColor: item.dataset.borderColor,
+            backgroundColor: item.dataset.borderColor,
+            borderWidth: 2, borderRadius: 2,
+          }),
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true, text: "Training Step",
+          color: "rgba(255,255,255,0.5)",
+          font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+          padding: { top: 8 },
+        },
+        ticks: {
+          color: "rgba(255,255,255,0.55)",
+          font: { family: "'IBM Plex Mono'", size: 10 },
+          maxTicksLimit: 12,
+        },
+        grid: { color: "rgba(255,255,255,0.06)" },
+        border: { color: "rgba(255,255,255,0.12)" },
+      },
+      y: {
+        type: "logarithmic",
+        title: {
+          display: true, text: "Optimal p*  (log scale)",
+          color: "rgba(255,255,255,0.5)",
+          font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+          padding: { bottom: 8 },
+        },
+        min: 2,
+        max: 800,
+        ticks: {
+          color: "rgba(255,255,255,0.55)",
+          font: { family: "'IBM Plex Mono'", size: 10 },
+          callback: function(val) {
+            if ([2, 3, 5, 10, 20, 50, 100, 200, 650].includes(val)) return val;
+            return "";
+          },
+        },
+        grid: { color: "rgba(255,255,255,0.06)", borderDash: [3, 3] },
+        border: { color: "rgba(255,255,255,0.12)" },
+      },
+    },
+  },
+});
+
+/* ── clickable legend ────────────────────────────────────────── */
+const legendEl = document.getElementById("legend");
+layerConfig.forEach((cfg, i) => {
+  const item = document.createElement("div");
+  item.className = "legend-item";
+
+  const line = document.createElement("div");
+  line.className = "legend-line" + (cfg.dash ? " dashed" : "");
+  line.style.borderTopColor = cfg.color;
+
+  const label = document.createElement("span");
+  label.className = "legend-label";
+  label.textContent = cfg.label;
+
+  item.appendChild(line);
+  item.appendChild(label);
+  legendEl.appendChild(item);
+
+  item.addEventListener("click", function() {
+    const meta = chart.getDatasetMeta(i);
+    meta.hidden = !meta.hidden;
+    item.classList.toggle("dimmed");
+    chart.update();
+  });
+});
+</script>
+</body>
+</html>
