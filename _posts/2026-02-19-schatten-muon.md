@@ -343,8 +343,7 @@ To sum things up, our algorithm takes up the following form:
 
 ### Empirical Results
 
-To check out the validity of our implementation, we run a gridsearch on a ResMLP neural network on the CIFAR-10 dataset. 
-We average results across three different random seeds, without weight decay, across different learning rate values. We use a batch
+To check out the validity of our implementation, we run a gridsearch on a ResMLP neural network on the CIFAR-10 and CIFAR-100 dataset . We average results across three different random seeds, without weight decay, across different learning rate values. We use a batch
 size of 1024.
 
 <figure style="text-align: center;">
@@ -358,7 +357,7 @@ size of 1024.
 </figure>
 
 So yay I guess, our version is competitive ! For reference, 
-tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
+tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds (using a batch size of 256), this becomes negligible when using a batch size of 1024 (i.e. ~1s for a total of 900 seconds). This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
 
 Given that our optimizer is now adaptive, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:
 
