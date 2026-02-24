@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-23T18:47:58+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="using-schatten-p-norms-to-dynamically-interpolate-between-sgd-and-muon">Using Schatten-p norms to dynamically interpolate between SGD and Muon</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-24T10:21:37+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="using-schatten-p-norms-to-dynamically-interpolate-between-sgd-and-muon">Using Schatten-p norms to dynamically interpolate between SGD and Muon</h1>
 <p>Thomas MASSENA | <a href="https://github.com/massena-t/adaptive-ns">Link to repository</a></p>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
@@ -323,14 +323,14 @@ size of 1024.</p>
 <p>Given that our optimizer is now adaptive, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:</p>
 
 <figure style="text-align: center;">
-  <iframe src="/assets/html/layerwise_p_chart.html" style="width: 100%; height: 500px; border: none; border-radius: 16px;" loading="lazy">
+  <iframe src="/assets/html/layerwise_p_chart.html" style="width: 100%; height: 700px; border: none; border-radius: 16px;" loading="lazy">
   </iframe>
   <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
-    <strong>The optimal p* across layers varies strongly with depth, while staying stable.</strong>
+    <strong>The optimal p* across layers varies strongly with depth, while mostly staying stable (with small $N$ and large $S$).</strong>
   </figcaption>
 </figure>
 
-<p>This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to not be too unstable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency.</p>
+<p>This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to be rather stable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency.</p>
 
 <h3 id="conclusion">Conclusion</h3>
 
