@@ -1,5 +1,5 @@
 ---
-title: "Adaptive-p Muon"
+title: "Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically"
 date: 2026-02-19 12:00:00 +0100
 tags: [optimization]
 categories: [blog]
@@ -349,15 +349,16 @@ size of 1024.
 
 <figure style="text-align: center;">
   <iframe src="/assets/html/resmlp_cifar_chart.html"
-          style="width: 100%; height: 460px; border: none; border-radius: 16px;"
+          style="width: 100%; height: 600px; border: none; border-radius: 16px;"
           loading="lazy">
   </iframe>
   <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
-    <strong>ResMLP on CIFAR-10 after 100 epochs, averaged across 3 random seeds.</strong>
+    <strong>ResMLP on CIFAR-10 and CIFAR-100 after 100 and 150 epochs respectively, averaged across 3 random seeds.</strong>
   </figcaption>
 </figure>
 
-So yay I guess, our version is competitive ! For reference, tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
+So yay I guess, our version is competitive ! For reference, 
+tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
 
 Given that our optimizer is now adaptive, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:
 

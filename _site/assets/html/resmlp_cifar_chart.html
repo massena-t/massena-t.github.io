@@ -26,13 +26,39 @@
   }
   .subtitle {
     font-size: 13px; color: rgba(255,255,255,0.45);
-    text-align: center; margin-bottom: 12px;
+    text-align: center; margin-bottom: 14px;
   }
+  /* ── dataset toggle ── */
+  .ds-bar {
+    display: flex; justify-content: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .ds-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 16px; border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.55);
+    cursor: pointer; transition: all 0.2s;
+    user-select: none;
+  }
+  .ds-btn:hover {
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.08);
+  }
+  .ds-btn.active {
+    border-color: rgba(99,179,237,0.6);
+    background: rgba(99,179,237,0.12);
+    color: #93c5fd;
+  }
+  /* ── legend ── */
   .legend {
     display: flex; justify-content: center; gap: 28px;
     margin-bottom: 20px; flex-wrap: wrap;
   }
-  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; transition: opacity 0.3s; }
+  .legend-item.hidden { opacity: 0; pointer-events: none; width: 0; overflow: hidden; margin: 0; gap: 0; }
   .legend-swatch {
     width: 16px; height: 3px; border-radius: 2px; position: relative;
   }
@@ -59,20 +85,11 @@
 <div class="container">
   <div class="title">Training & Evaluation Metrics vs Learning Rate</div>
   <div class="subtitle">Mean ± std over 3 random seeds</div>
-  <div class="legend">
-    <div class="legend-item">
-      <div class="legend-swatch" style="background:#2563eb"></div>
-      <span class="legend-label">Muon</span>
-    </div>
-    <div class="legend-item">
-      <div class="legend-swatch" style="background:#dc2626"></div>
-      <span class="legend-label">pMuon (large N, small S)</span>
-    </div>
-    <div class="legend-item">
-      <div class="legend-swatch" style="background:#16a34a"></div>
-      <span class="legend-label">pMuon (small N, large S)</span>
-    </div>
-  </div>
+
+  <div class="ds-bar" id="dsBar"></div>
+
+  <div class="legend" id="legend"></div>
+
   <div class="panels">
     <div class="panel">
       <div class="panel-title">Train Loss</div>
@@ -89,56 +106,100 @@
   </div>
 </div>
 <script>
+/* ════════════════ DATA ════════════════ */
 const lrs = ["0.005", "0.01", "0.02"];
-const colors = ["#2563eb", "#dc2626", "#16a34a"];
-const names = ["Muon", "pMuon (large N, small S)", "pMuon (small N, large S)"];
 
-const panelData = [
-  {
-    means: [
-      [0.156912, 0.109905, 0.153186],
-      [0.212578, 0.117838, 0.133226],
-      [0.193934, 0.113229, 0.139061],
-    ],
-    stds: [
-      [0.014809, 0.006446, 0.005638],
-      [0.021762, 0.007316, 0.004467],
-      [0.019257, 0.003822, 0.005533],
-    ],
-    yLabel: "Train Loss",
-    decimals: 4,
-  },
-  {
-    means: [
-      [94.6299, 96.2217, 94.7129],
-      [92.6777, 95.9681, 95.4229],
-      [93.3102, 96.1380, 95.2451],
-    ],
-    stds: [
-      [0.5483, 0.2491, 0.2089],
-      [0.7656, 0.2748, 0.1678],
-      [0.7172, 0.1293, 0.1992],
-    ],
-    yLabel: "Train Accuracy (%)",
-    decimals: 2,
-  },
-  {
-    means: [
-      [86.35,  86.7767, 85.7333],
-      [85.80,  87.1300, 86.4900],
-      [86.13,  87.0400, 86.3233],
-    ],
-    stds: [
-      [0.1709, 0.1528, 0.1457],
-      [0.3559, 0.3400, 0.1706],
-      [0.3000, 0.1300, 0.0737],
-    ],
-    yLabel: "Test Accuracy (%)",
-    decimals: 2,
-  },
-];
+const allNames = ["Muon", "pMuon (large N, small S)", "pMuon (small N, large S)"];
+const colors   = ["#2563eb", "#dc2626", "#16a34a"];
 
-/* ── Error-bar plugin ─────────────────────────────────────────── */
+const datasets = {
+  cifar10: {
+    label: "CIFAR-10",
+    names: ["Muon", "pMuon (large N, small S)", "pMuon (small N, large S)"],
+    panels: [
+      { /* Train Loss */
+        means: [
+          [0.156912, 0.109905, 0.153186],
+          [0.212578, 0.117838, 0.133226],
+          [0.193934, 0.113229, 0.139061],
+        ],
+        stds: [
+          [0.014809, 0.006446, 0.005638],
+          [0.021762, 0.007316, 0.004467],
+          [0.019257, 0.003822, 0.005533],
+        ],
+        yLabel: "Train Loss", decimals: 4,
+      },
+      { /* Train Acc */
+        means: [
+          [94.6299, 96.2217, 94.7129],
+          [92.6777, 95.9681, 95.4229],
+          [93.3102, 96.1380, 95.2451],
+        ],
+        stds: [
+          [0.5483, 0.2491, 0.2089],
+          [0.7656, 0.2748, 0.1678],
+          [0.7172, 0.1293, 0.1992],
+        ],
+        yLabel: "Train Accuracy (%)", decimals: 2,
+      },
+      { /* Test Acc */
+        means: [
+          [86.35,  86.7767, 85.7333],
+          [85.80,  87.1300, 86.4900],
+          [86.13,  87.0400, 86.3233],
+        ],
+        stds: [
+          [0.1709, 0.1528, 0.1457],
+          [0.3559, 0.3400, 0.1706],
+          [0.3000, 0.1300, 0.0737],
+        ],
+        yLabel: "Test Accuracy (%)", decimals: 2,
+      },
+    ],
+  },
+  cifar100: {
+    label: "CIFAR-100",
+    names: ["Muon", "pMuon (large N, small S)"],
+    panels: [
+      { /* Train Loss */
+        means: [
+          [0.2345, 0.1764, 0.2300],
+          [0.2511, 0.1794, 0.2024],
+        ],
+        stds: [
+          [0.0166, 0.0159, 0.0153],
+          [0.0162, 0.0143, 0.0154],
+        ],
+        yLabel: "Train Loss", decimals: 4,
+      },
+      { /* Train Acc */
+        means: [
+          [93.1729, 94.7699, 93.3151],
+          [92.7383, 94.7259, 94.0729],
+        ],
+        stds: [
+          [0.4291, 0.4528, 0.4354],
+          [0.4349, 0.3553, 0.4260],
+        ],
+        yLabel: "Train Accuracy (%)", decimals: 2,
+      },
+      { /* Test Acc */
+        means: [
+          [62.3600, 62.4700, 60.5467],
+          [61.9200, 62.4000, 62.1567],
+        ],
+        stds: [
+          [0.5164, 0.2078, 0.8053],
+          [0.0985, 0.2352, 0.5619],
+        ],
+        yLabel: "Test Accuracy (%)", decimals: 2,
+      },
+    ],
+  },
+};
+
+/* ════════════════ ERROR BAR PLUGIN ════════════════ */
 const errorBarPlugin = {
   id: "errorBars",
   afterDatasetsDraw(chart) {
@@ -171,14 +232,17 @@ const errorBarPlugin = {
 };
 Chart.register(errorBarPlugin);
 
-/* ── Build charts ─────────────────────────────────────────────── */
-panelData.forEach((p, idx) => {
-  const ctx = document.getElementById("chart" + idx).getContext("2d");
+/* ════════════════ CHART INSTANCES ════════════════ */
+const charts = [];
+let activeDS = "cifar10";
 
-  const datasets = names.map((name, i) => ({
+function buildChartDatasets(dsKey, panelIdx) {
+  const ds = datasets[dsKey];
+  const panel = ds.panels[panelIdx];
+  return ds.names.map((name, i) => ({
     label: name,
-    data: p.means[i],
-    errorBars: p.stds[i],
+    data: panel.means[i],
+    errorBars: panel.stds[i],
     borderColor: colors[i],
     backgroundColor: colors[i],
     borderWidth: 2.5,
@@ -192,77 +256,158 @@ panelData.forEach((p, idx) => {
     tension: 0,
     fill: false,
   }));
+}
 
-  new Chart(ctx, {
-    type: "line",
-    data: { labels: lrs, datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 0.95,
-      animation: { duration: 600, easing: "easeOutQuart" },
-      interaction: { mode: "index", intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: "#1a1a2e",
-          borderColor: "rgba(255,255,255,0.12)",
-          borderWidth: 1,
-          titleFont: { family: "'IBM Plex Mono'", size: 12, weight: "600" },
-          bodyFont: { family: "'IBM Plex Mono'", size: 11 },
-          titleColor: "#fff",
-          bodyColor: "#e0e0e0",
-          padding: 12,
-          cornerRadius: 8,
-          callbacks: {
-            title: (items) => "lr = " + items[0].label,
-            label: (item) => {
-              const std = item.dataset.errorBars[item.dataIndex];
-              return " " + item.dataset.label + ": " +
-                     item.raw.toFixed(p.decimals) + " \u00B1 " +
-                     std.toFixed(p.decimals);
-            },
-            labelColor: (item) => ({
-              borderColor: item.dataset.borderColor,
-              backgroundColor: item.dataset.borderColor,
-              borderWidth: 2, borderRadius: 2,
-            }),
+function makeChartOptions(panel) {
+  return {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 0.95,
+    animation: { duration: 400, easing: "easeOutQuart" },
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: "#1a1a2e",
+        borderColor: "rgba(255,255,255,0.12)",
+        borderWidth: 1,
+        titleFont: { family: "'IBM Plex Mono'", size: 12, weight: "600" },
+        bodyFont: { family: "'IBM Plex Mono'", size: 11 },
+        titleColor: "#fff", bodyColor: "#e0e0e0",
+        padding: 12, cornerRadius: 8,
+        callbacks: {
+          title: (items) => "lr = " + items[0].label,
+          label: (item) => {
+            const std = item.dataset.errorBars[item.dataIndex];
+            return " " + item.dataset.label + ": " +
+              item.raw.toFixed(panel.decimals) + " \u00B1 " +
+              std.toFixed(panel.decimals);
           },
-        },
-      },
-      scales: {
-        x: {
-          title: {
-            display: true, text: "Learning Rate",
-            color: "rgba(255,255,255,0.5)",
-            font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
-            padding: { top: 8 },
-          },
-          ticks: {
-            color: "rgba(255,255,255,0.55)",
-            font: { family: "'IBM Plex Mono'", size: 11 },
-          },
-          grid: { color: "rgba(255,255,255,0.06)" },
-          border: { color: "rgba(255,255,255,0.12)" },
-        },
-        y: {
-          title: {
-            display: true, text: p.yLabel,
-            color: "rgba(255,255,255,0.5)",
-            font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
-            padding: { bottom: 8 },
-          },
-          ticks: {
-            color: "rgba(255,255,255,0.55)",
-            font: { family: "'IBM Plex Mono'", size: 11 },
-          },
-          grid: { color: "rgba(255,255,255,0.06)", borderDash: [3, 3] },
-          border: { color: "rgba(255,255,255,0.12)" },
+          labelColor: (item) => ({
+            borderColor: item.dataset.borderColor,
+            backgroundColor: item.dataset.borderColor,
+            borderWidth: 2, borderRadius: 2,
+          }),
         },
       },
     },
+    scales: {
+      x: {
+        title: {
+          display: true, text: "Learning Rate",
+          color: "rgba(255,255,255,0.5)",
+          font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+          padding: { top: 8 },
+        },
+        ticks: {
+          color: "rgba(255,255,255,0.55)",
+          font: { family: "'IBM Plex Mono'", size: 11 },
+        },
+        grid: { color: "rgba(255,255,255,0.06)" },
+        border: { color: "rgba(255,255,255,0.12)" },
+      },
+      y: {
+        title: {
+          display: true, text: panel.yLabel,
+          color: "rgba(255,255,255,0.5)",
+          font: { family: "'IBM Plex Sans'", size: 12, weight: "500" },
+          padding: { bottom: 8 },
+        },
+        ticks: {
+          color: "rgba(255,255,255,0.55)",
+          font: { family: "'IBM Plex Mono'", size: 11 },
+        },
+        grid: { color: "rgba(255,255,255,0.06)", borderDash: [3, 3] },
+        border: { color: "rgba(255,255,255,0.12)" },
+      },
+    },
+  };
+}
+
+/* create all 3 charts initially */
+for (let idx = 0; idx < 3; idx++) {
+  const panel = datasets.cifar10.panels[idx];
+  const ctx = document.getElementById("chart" + idx).getContext("2d");
+  const c = new Chart(ctx, {
+    type: "line",
+    data: { labels: lrs, datasets: buildChartDatasets("cifar10", idx) },
+    options: makeChartOptions(panel),
   });
+  charts.push(c);
+}
+
+/* ════════════════ DATASET TOGGLE ════════════════ */
+function switchDataset(dsKey) {
+  activeDS = dsKey;
+  const ds = datasets[dsKey];
+  charts.forEach((c, idx) => {
+    const panel = ds.panels[idx];
+    c.data.datasets = buildChartDatasets(dsKey, idx);
+    c.options.scales.y.title.text = panel.yLabel;
+    /* store decimals for tooltip */
+    c.options._decimals = panel.decimals;
+    /* update tooltip callback with correct decimals */
+    c.options.plugins.tooltip.callbacks.label = (item) => {
+      const std = item.dataset.errorBars[item.dataIndex];
+      return " " + item.dataset.label + ": " +
+        item.raw.toFixed(panel.decimals) + " \u00B1 " +
+        std.toFixed(panel.decimals);
+    };
+    c.update();
+  });
+  /* update buttons */
+  document.querySelectorAll(".ds-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.ds === dsKey));
+  /* update legend */
+  updateLegend(dsKey);
+}
+
+const dsBar = document.getElementById("dsBar");
+[{ id: "cifar10", label: "CIFAR-10" }, { id: "cifar100", label: "CIFAR-100" }].forEach(opt => {
+  const btn = document.createElement("button");
+  btn.className = "ds-btn" + (opt.id === "cifar10" ? " active" : "");
+  btn.textContent = opt.label;
+  btn.dataset.ds = opt.id;
+  btn.addEventListener("click", () => switchDataset(opt.id));
+  dsBar.appendChild(btn);
 });
+
+/* ════════════════ LEGEND ════════════════ */
+const legendEl = document.getElementById("legend");
+const legendItems = [];
+
+allNames.forEach((name, i) => {
+  const item = document.createElement("div");
+  item.className = "legend-item";
+
+  const swatch = document.createElement("div");
+  swatch.className = "legend-swatch";
+  swatch.style.background = colors[i];
+
+  const label = document.createElement("span");
+  label.className = "legend-label";
+  label.textContent = name;
+
+  item.appendChild(swatch);
+  item.appendChild(label);
+  legendEl.appendChild(item);
+  legendItems.push({ el: item, name });
+});
+
+function updateLegend(dsKey) {
+  const ds = datasets[dsKey];
+  legendItems.forEach((li, i) => {
+    /* For CIFAR-100: rename "pMuon (large N, small S)" → "pMuon" and hide greedy */
+    if (dsKey === "cifar100") {
+      if (i === 0) { li.el.classList.remove("hidden"); li.el.querySelector(".legend-label").textContent = "Muon"; }
+      else if (i === 1) { li.el.classList.remove("hidden"); li.el.querySelector(".legend-label").textContent = "pMuon (large N, small S)"; }
+      else { li.el.classList.add("hidden"); }
+    } else {
+      li.el.classList.remove("hidden");
+      li.el.querySelector(".legend-label").textContent = allNames[i];
+    }
+  });
+}
 </script>
 </body>
 </html>

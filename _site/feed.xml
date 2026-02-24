@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-24T11:48:43+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive-p Muon</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive-p Muon" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="adaptive-schatten-p-norm-descent-interpolating-between-sgd-and-muon-dynamically">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-24T14:56:22+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="adaptive-schatten-p-norm-descent-interpolating-between-sgd-and-muon-dynamically">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically</h1>
 <p>Thomas MASSENA | <a href="https://github.com/massena-t/adaptive-ns">Link to repository</a></p>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
@@ -311,14 +311,15 @@ We average results across three different random seeds, without weight decay, ac
 size of 1024.</p>
 
 <figure style="text-align: center;">
-  <iframe src="/assets/html/resmlp_cifar_chart.html" style="width: 100%; height: 460px; border: none; border-radius: 16px;" loading="lazy">
+  <iframe src="/assets/html/resmlp_cifar_chart.html" style="width: 100%; height: 600px; border: none; border-radius: 16px;" loading="lazy">
   </iframe>
   <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
-    <strong>ResMLP on CIFAR-10 after 100 epochs, averaged across 3 random seeds.</strong>
+    <strong>ResMLP on CIFAR-10 and CIFAR-100 after 100 and 150 epochs respectively, averaged across 3 random seeds.</strong>
   </figcaption>
 </figure>
 
-<p>So yay I guess, our version is competitive ! For reference, tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let’s get to the fun stuff.</p>
+<p>So yay I guess, our version is competitive ! For reference, 
+tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds. This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let’s get to the fun stuff.</p>
 
 <p>Given that our optimizer is now adaptive, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:</p>
 
