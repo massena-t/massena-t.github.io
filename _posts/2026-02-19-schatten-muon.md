@@ -363,15 +363,15 @@ Given that our optimizer is now adaptive, what insights do we recover about the 
 
 <figure style="text-align: center;">
   <iframe src="/assets/html/layerwise_p_chart.html"
-          style="width: 100%; height: 500px; border: none; border-radius: 16px;"
+          style="width: 100%; height: 700px; border: none; border-radius: 16px;"
           loading="lazy">
   </iframe>
   <figcaption style="margin-top: 8px; font-size: 1.0em; color: #666;">
-    <strong>The optimal p* across layers varies strongly with depth, while staying stable.</strong>
+    <strong>The optimal p* across layers varies strongly with depth, while mostly staying stable (with small $N$ and large $S$).</strong>
   </figcaption>
 </figure>
 
-This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to not be too unstable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency.
+This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to be rather stable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency.
 
 ### Conclusion
 
