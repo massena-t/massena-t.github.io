@@ -414,6 +414,8 @@ I might be working on this in the following weeks.
 
 <p>Qi, Xianbiao, et al. "Delving into Muon and Beyond: Deep Analysis and Extensions." arXiv preprint arXiv:2602.04669 (2026).</p>
 
+<p>Cesista, Franz Louis, <a href="https://leloykun.github.io/ponder/steepest-descent-schatten-p/" target="_blank">"Steepest Descent Under Schatten-p Norms"</a>, 2025</p>
+
 </div>
 
 ### Cite this blog
