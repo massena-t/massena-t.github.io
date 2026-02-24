@@ -1,12 +1,12 @@
 ---
-title: "Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon"
+title: "Adaptive-p Muon"
 date: 2026-02-19 12:00:00 +0100
 tags: [optimization]
 categories: [blog]
 layout: posts
 ---
 
-# Using Schatten-p norms to dynamically interpolate between SGD and Muon
+# Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically
 Thomas MASSENA | [Link to repository](https://github.com/massena-t/adaptive-ns)
 
 
@@ -371,12 +371,16 @@ Given that our optimizer is now adaptive, what insights do we recover about the 
   </figcaption>
 </figure>
 
-This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to be rather stable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency.
+This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to be rather stable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency. 
 
 ### Conclusion
 
 While this whole theoretical derivation turned out pretty good. Further experimentation will be needed to determine whether the extra overhead this method introduces is worthwhile in the grand scheme of things, especially on the *bitter lesson* side. 
 Anyhow, even if it is not worth it in terms of runtime / memory / training quality, I believe this method could be particularly interesting to understand the underlying dynamics of deep neural network training.
+
+### Disclaimer
+
+I am still relatively new to the optimization literature. Please let me know if you would like to discuss any corrections, research directions and improvements for my work. 
 
 ### Limitations and Opportunities
 
@@ -388,10 +392,6 @@ While this whole study shows that Muon orthogonalization can be made adaptive. I
 - Investigating whether the optimal $p$ derived under the random feature regression framework remains well-suited when applied to the non-convex, multi-layer dynamics of deep neural network training is still an open question.
 
 I might be working on this in the following weeks.
-
-### Disclaimer
-
-I am still relatively new to the optimization literature. Please let me know if you would like to discuss any corrections, research directions and improvements for my work. 
 
 ### References
 
@@ -434,7 +434,7 @@ If you found this small write up pertinent to your research, please consider cit
   line-height:1.5;
   overflow-x:auto;
 "><code>@article{massena_pmuon,
-  title={Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon},
+  title={Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically},
   author={Thomas Massena},
   url={http://massena-t.github.io/blog/2026/02/19/schatten-muon.html},
   year={2026}

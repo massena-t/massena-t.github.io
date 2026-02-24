@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-24T10:21:37+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="using-schatten-p-norms-to-dynamically-interpolate-between-sgd-and-muon">Using Schatten-p norms to dynamically interpolate between SGD and Muon</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-24T11:48:43+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Thomas Massena</title><subtitle>Personal website</subtitle><entry><title type="html">Adaptive-p Muon</title><link href="http://localhost:4000/blog/2026/02/19/schatten-muon.html" rel="alternate" type="text/html" title="Adaptive-p Muon" /><published>2026-02-19T12:00:00+01:00</published><updated>2026-02-19T12:00:00+01:00</updated><id>http://localhost:4000/blog/2026/02/19/schatten-muon</id><content type="html" xml:base="http://localhost:4000/blog/2026/02/19/schatten-muon.html"><![CDATA[<h1 id="adaptive-schatten-p-norm-descent-interpolating-between-sgd-and-muon-dynamically">Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically</h1>
 <p>Thomas MASSENA | <a href="https://github.com/massena-t/adaptive-ns">Link to repository</a></p>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
@@ -337,6 +337,10 @@ size of 1024.</p>
 <p>While this whole theoretical derivation turned out pretty good. Further experimentation will be needed to determine whether the extra overhead this method introduces is worthwhile in the grand scheme of things, especially on the <em>bitter lesson</em> side. 
 Anyhow, even if it is not worth it in terms of runtime / memory / training quality, I believe this method could be particularly interesting to understand the underlying dynamics of deep neural network training.</p>
 
+<h3 id="disclaimer">Disclaimer</h3>
+
+<p>I am still relatively new to the optimization literature. Please let me know if you would like to discuss any corrections, research directions and improvements for my work.</p>
+
 <h3 id="limitations-and-opportunities">Limitations and Opportunities</h3>
 
 <p>While this whole study shows that Muon orthogonalization can be made adaptive. I believe the following elements could still be improved:</p>
@@ -349,10 +353,6 @@ Anyhow, even if it is not worth it in terms of runtime / memory / training quali
 </ul>
 
 <p>I might be working on this in the following weeks.</p>
-
-<h3 id="disclaimer">Disclaimer</h3>
-
-<p>I am still relatively new to the optimization literature. Please let me know if you would like to discuss any corrections, research directions and improvements for my work.</p>
 
 <h3 id="references">References</h3>
 
@@ -395,9 +395,9 @@ Anyhow, even if it is not worth it in terms of runtime / memory / training quali
   line-height:1.5;
   overflow-x:auto;
 "><code>@article{massena_pmuon,
-  title={Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon},
+  title={Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically},
   author={Thomas Massena},
   url={http://massena-t.github.io/blog/2026/02/19/schatten-muon.html},
   year={2026}
 }</code></pre>
-</div>]]></content><author><name></name></author><category term="blog" /><category term="optimization" /><summary type="html"><![CDATA[Using Schatten-p norms to dynamically interpolate between SGD and Muon Thomas MASSENA | Link to repository]]></summary></entry></feed>
+</div>]]></content><author><name></name></author><category term="blog" /><category term="optimization" /><summary type="html"><![CDATA[Adaptive Schatten-p Norm Descent: Interpolating between SGD and Muon Dynamically Thomas MASSENA | Link to repository]]></summary></entry></feed>
