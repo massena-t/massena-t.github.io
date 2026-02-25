@@ -40,7 +40,10 @@ body{
   margin-left:6px;background:#111;border:1px solid rgba(255,255,255,0.15);
   color:#fff;border-radius:6px;padding:4px 6px;font-family:inherit;width:80px;
 }
-canvas{width:100%!important}
+canvas {
+  width: 100% !important;
+  height: 420px !important;   /* coeffs.html */
+}
 .annotation{
   font-size:11px;color:rgba(255,255,255,0.35);
   text-align:center;margin-top:10px;
@@ -161,8 +164,7 @@ const chart=new Chart(ctx,{
   },
   options:{
     responsive:true,
-    maintainAspectRatio:true,
-    aspectRatio:1.6,
+    maintainAspectRatio:false,
     animation:{duration:350,easing:"easeOutQuart"},
     interaction:{mode:"index",intersect:false},
     plugins:{

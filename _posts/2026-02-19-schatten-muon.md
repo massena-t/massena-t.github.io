@@ -148,6 +148,7 @@ With $u=1/p$ this time. For better approximation performance, we can perform $N$
 
 *This implementation is really simple and could probably benefit from further improving, for the sake of conciseness however we'll keep it at that*. 
 
+<div class="plot-wrap">
 <figure style="text-align: center;">
   <iframe src="/assets/html/coeffs.html"
           style="width: 100%; height: 650px; border: none; border-radius: 16px;"
@@ -158,6 +159,7 @@ With $u=1/p$ this time. For better approximation performance, we can perform $N$
     Coefficients computed under constraint a + b + c = 1.
   </figcaption>
 </figure>
+</div>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; background-color: #c1c1e1;">
 Note: For more insights on Newton-Schulz coefficient computation, you can refer to <a href="https://leloykun.github.io/ponder/muon-opt-coeffs/" target="_blank">Franz Cesista's method</a> or even the <a href="https://arxiv.org/abs/2506.10935" target="_blank">Grishina (CANS)</a> or <a href="https://arxiv.org/abs/2505.16932" target="_blank">Amsel (Polar Express)</a> papers.
@@ -346,6 +348,7 @@ To sum things up, our algorithm takes up the following form:
 To check out the validity of our implementation, we run a gridsearch on a ResMLP neural network on the CIFAR-10 and CIFAR-100 dataset . We average results across three different random seeds, without weight decay, across different learning rate values. We use a batch
 size of 1024.
 
+<div class="plot-wrap">
 <figure style="text-align: center;">
   <iframe src="/assets/html/resmlp_cifar_chart.html"
           style="width: 100%; height: 600px; border: none; border-radius: 16px;"
@@ -355,12 +358,14 @@ size of 1024.
     <strong>ResMLP on CIFAR-10 and CIFAR-100 after 100 and 150 epochs respectively, averaged across 3 random seeds.</strong>
   </figcaption>
 </figure>
+</div>
 
 So yay I guess, our version is competitive ! For reference, 
 tracking the optimal $p$ for all layers every 100 steps yields a 20s slowdown on a run that took the base Muon implementation 4 minutes and 25 seconds (using a batch size of 256), this becomes negligible when using a batch size of 1024 (i.e. ~1s for a total of 900 seconds). This is pretty good given that this initial test was more about validating the concept than pushing for efficiency. Now let's get to the fun stuff. 
 
 Given that our optimizer is now adaptive, what insights do we recover about the optimal $p$ update across layers ? For example, on that same ResMLP network, we notice:
 
+<div class="plot-wrap">
 <figure style="text-align: center;">
   <iframe src="/assets/html/layerwise_p_chart.html"
           style="width: 100%; height: 700px; border: none; border-radius: 16px;"
@@ -370,6 +375,7 @@ Given that our optimizer is now adaptive, what insights do we recover about the 
     <strong>The optimal p* across layers varies strongly with depth, while mostly staying stable (with small $N$ and large $S$).</strong>
   </figcaption>
 </figure>
+</div>
 
 This recovers a typical empirical insight about the Muon optimizer, e.g., why people usually tend to exclude first and last layers from the Muon-optimized groups of parameters. Also, we notice that the optimal layerwise $p$ value tends to be rather stable and that updating $p$ more often during early training and less often at the end might be a good strategy to improve computational efficiency. 
 
@@ -386,10 +392,11 @@ I am still relatively new to the optimization literature. Please let me know if 
 
 While this whole study shows that Muon orthogonalization can be made adaptive. I believe the following elements could still be improved:
 - The coefficient computation method could probably be improved via Chebyshev-type polynomial algorithms (see the Amsel et al. & Grishina et al. papers).
-- Deriving the proper $\eta_{t,p}$ empirically or theoretically motivated learning rate scheduling in terms of $t$ and $p$ could be worthwhile. 
+- Deriving the proper $\eta_{t,p}$ empirically or theoretically motivated learning rate scheduling in terms of $t$ and $p$ could be worthwhile (i.e applying the proper dual norm scaling). 
 - Improving approximation methods for the optimal $p$ computations would have runtime and stability benefits.
 - Adding second order momentum that depends on the optimal $p$ value could improve performance ? Steering our SGD $\rightarrow$ Muon approach into a Adam $\rightarrow$ Muon direction ? 
 - Investigating whether the optimal $p$ derived under the random feature regression framework remains well-suited when applied to the non-convex, multi-layer dynamics of deep neural network training is still an open question.
+- A proper study of the dynamics of this adaptive scheme when using attention-based layers would be of use.
 
 I might be working on this in the following weeks.
 

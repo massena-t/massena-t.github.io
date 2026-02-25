@@ -79,6 +79,39 @@
     margin-bottom: 12px; letter-spacing: -0.01em;
   }
   canvas { width: 100% !important; }
+  /* MOBILE FIX */
+  @media (max-width: 700px) {
+  
+    body {
+      padding: 10px;
+    }
+  
+    .container {
+      padding: 18px 14px 16px;
+    }
+  
+    .title {
+      font-size: 18px;
+    }
+  
+    .subtitle {
+      font-size: 12px;
+    }
+  
+    /* KEY: stack charts vertically */
+    .panels {
+      flex-direction: column;
+      gap: 28px;
+    }
+  
+    .panel-title {
+      font-size: 14px;
+    }
+  
+    canvas {
+      max-height: 260px;
+    }
+  }
 </style>
 </head>
 <body>

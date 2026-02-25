@@ -334,5 +334,9 @@ a:hover {
     margin-left: 0;
     margin-top: 0.5rem;
     width: fit-content;
+
+  .plot-wrap iframe {
+    height: 520px;
   }
-}
+} 
+

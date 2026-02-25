@@ -74,7 +74,10 @@
     margin-top: 10px; font-family: 'IBM Plex Mono', monospace;
   }
   .annotation span { color: rgba(255,255,255,0.55); }
-  canvas { width: 100% !important; }
+  canvas {
+    width: 100% !important;
+    height: 500px !important;   /* coeffs.html */
+  }
 </style>
 </head>
 <body>
@@ -145,7 +148,7 @@ const chart=new Chart(ctx,{
   type:"line",
   data:{labels:steps,datasets:buildDatasets("mean")},
   options:{
-    responsive:true,maintainAspectRatio:true,aspectRatio:1.65,
+    responsive:true,maintainAspectRatio:false,
     animation:{duration:400,easing:"easeOutQuart"},
     interaction:{mode:"index",intersect:false},
     plugins:{
