@@ -10,6 +10,11 @@ title: "Thomas Massena"
   <p>I was fortunate to share this honor with my brilliant coworker <strong>Leo Andeol</strong>.</p>
 </div>
 
+## Recorded Talks
+
+I was invited to pitch my recent paper "Fast and Flexible Robustness Certificates for Semantic Segmentation" at ANITI Days 2026 in Toulouse. You can find the talk <a href="https://www.youtube.com/watch?v=YsUPKgzPnIA" target="_blank">here</a>.
+
+
 ## Publications
 
 <div class="publications">
