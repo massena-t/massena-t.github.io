@@ -5,6 +5,11 @@ url: "https://massena-t.github.io"
 
 markdown: kramdown
 
+collections:
+  various:
+    output: true
+    permalink: /various/:name/
+
 defaults:
   - scope:
       path: ""

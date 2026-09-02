@@ -3,31 +3,45 @@ layout: default
 title: "Thomas Massena"
 ---
 
+<div class="news-card">
+  <p>As I approach the final year of my PhD, I am open to discussing new opportunities as an <strong>AI Researcher</strong> or <strong>AI Software Engineer</strong>.</p>
+  <p>Feel free to reach out at <a href="mailto:thomasmassena@gmail.com">thomasmassena@gmail.com</a>.</p>
+</div>
+
 ## News
 
-<div class="news-card">
-  <p>I am honored to announce I received the <strong>Alexey Chervonenkis Award</strong> for <strong>Best Poster</strong> at the Fourteenth Symposium on Conformal and Probabilistic Prediction with Applications (COPA 2025).</p>
-  <p>I was fortunate to share this honor with my brilliant coworker <strong>Leo Andeol</strong>.</p>
-</div>
+Our paper, <em>Fast and Flexible Robustness Certificates for Semantic Segmentation</em>, was accepted at <strong>ECCV 2026</strong>.
+
+Merged a PR on the <a href="https://github.com/google-deepmind/optax/pull/1602" target="_blank">Optax</a> repository containing coefficient presets and various normalization schemes for the Muon optimizer, along with the Turbo-Muon contributions.
 
 ## Recorded Talks
 
-I was invited to pitch my recent paper "Fast and Flexible Robustness Certificates for Semantic Segmentation" at ANITI Days 2026 in Toulouse. You can find the talk <a href="https://www.youtube.com/watch?v=YsUPKgzPnIA" target="_blank">here</a>.
+I was invited to pitch my recent paper, "Fast and Flexible Robustness Certificates for Semantic Segmentation," at ANITI Days 2026 in Toulouse. You can watch the <a href="https://www.youtube.com/watch?v=YsUPKgzPnIA" target="_blank">ANITI Days talk</a> and the associated <a href="https://www.youtube.com/watch?v=KxZP6ML0T2s" target="_blank">five-minute ECCV presentation</a>.
 
+## Awards
+
+Together with my coworker <strong>Leo Andeol</strong>, I received the <strong>Alexey Chervonenkis Award for Best Poster</strong> at the Fourteenth Symposium on Conformal and Probabilistic Prediction with Applications (COPA 2025).
 
 ## Publications
 
 <div class="publications">
 
   <div class="pub-card">
-    <h4>Turbo-Muon: Accelerating Orthogonality-Based Optimization with Pre-Conditioning <span class="pub-venue">Pre-print</span></h4>
+    <h4>From SGD to Muon: Adaptive Optimization via Schatten-p Norms <span class="pub-venue">Pre-print, under review</span></h4>
+    <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, M. Serrurier</p>
+    <p class="pub-desc">Initially developed in this <a href="{% post_url 2026-02-19-schatten-muon %}">blog post</a>, we show that a first-order model of the LMO update rule's optimality is sufficient to match or improve upon the better-performing optimizer between Adam or Muon across diverse training tasks.</p>
+    <a href="https://arxiv.org/abs/2605.19781" target="_blank" class="pub-link">Paper &rarr;</a>
+  </div>
+
+  <div class="pub-card">
+    <h4>Turbo-Muon: Almost-Orthogonal Pre-Conditioning for Fast Muon Updates <span class="pub-venue">Pre-print, under review</span></h4>
     <p class="pub-authors">T. Boissin*, <em>T. Massena*</em>, F. Mamalet, M. Serrurier</p>
     <p class="pub-desc">We improve the efficiency of the costly Newton-Schulz iteration of the Muon optimizer by using a preconditioning method from the Approximately Orthogonal Layer paper from Prach et al. This allows us to conserve the impressive performance of the Muon optimizer while gaining substantial computational efficiency at scale.</p>
     <a href="https://arxiv.org/abs/2512.04632" target="_blank" class="pub-link">Paper &rarr;</a>
   </div>
 
   <div class="pub-card">
-    <h4>Fast and Flexible Robustness Certificates for Semantic Segmentation <span class="pub-venue">Pre-print</span></h4>
+    <h4>Fast and Flexible Robustness Certificates for Semantic Segmentation <span class="pub-venue">ECCV 2026</span></h4>
     <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, F. Mamalet, M. Serrurier</p>
     <p class="pub-desc">We use Lipschitz neural networks to perform certifiably robust segmentation tasks on challenging datasets such as CityScapes. Our networks are approximately 600 to 2000 times more computationally efficient at inference time. We additionally develop a full framework for the certification of complex deep learning models under arbitrary threats under two different paradigms.</p>
     <a href="https://arxiv.org/abs/2512.06010" target="_blank" class="pub-link">Paper &rarr;</a>
@@ -62,10 +76,4 @@ I was invited to pitch my recent paper "Fast and Flexible Robustness Certificate
     <a href="https://raw.githubusercontent.com/mlresearch/v266/main/assets/andeol25a/andeol25a.pdf" target="_blank" class="pub-link">Paper &rarr;</a>
   </div>
 
-</div>
-
-## Notice
-
-<div class="notice">
-This page is currently being built. More content coming soon.
 </div>
