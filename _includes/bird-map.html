@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<link rel="stylesheet" href="{{ '/assets/css/bird-map.css' | relative_url }}">
+
+<div class="bird-map-intro">
+  <h2>Observation Map</h2>
+  <p>Map positions indicate approximate observation areas, not exact sighting coordinates.</p>
+</div>
+
+<div
+  id="bird-map"
+  class="bird-map"
+  role="region"
+  aria-label="Interactive map showing approximate bird observation locations"
+>
+  <p class="bird-map-status">Loading the observation map&hellip;</p>
+</div>
+
+<noscript>
+  <p class="bird-map-fallback">The interactive map requires JavaScript. The complete bird list remains available below.</p>
+</noscript>
+
+<script id="bird-data" type="application/json">{{ site.data.birds | jsonify }}</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="{{ '/assets/js/bird-map.js' | relative_url }}"></script>

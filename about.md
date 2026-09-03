@@ -26,7 +26,7 @@ I have recently started working on optimization methods for large neural network
 
 I have served as a reviewer for CVPR (2025, 2026), ICML (2025), and NeurIPS (2026), among others.
 
-I supervised Yohan Le Morhedec during an internship at SNCF.
+I supervised Yohan Le Morhedec (Centrale Supelec) during an internship at SNCF.
 
 ## Contact
 
@@ -34,4 +34,4 @@ Feel free to reach out via email at <a href="mailto:thomasmassena@gmail.com">tho
 
 ## Miscellaneous
 
-I recently started birdwatching and will try to keep my [bird life list]({% link _various/life_list.md %}) reasonably up to date.
+I recently started birdwatching and will try to keep my [bird life list]({% link birds.md %}) reasonably up to date.

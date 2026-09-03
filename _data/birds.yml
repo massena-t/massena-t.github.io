@@ -1,0 +1,1253 @@
+- id: alpine-chough
+  common_name: "Alpine Chough"
+  scientific_name: "Pyrrhocorax graculus"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: alpine-swift
+  common_name: "Alpine Swift"
+  scientific_name: "Tachymarptis melba"
+  observations:
+    - location: "Vosges Parc, France"
+      country: "France"
+      latitude: 48.13
+      longitude: 7.10
+      coordinate_accuracy: "regional"
+
+- id: american-robin
+  common_name: "American Robin"
+  scientific_name: "Turdus migratorius"
+  observations:
+    - location: "Vancouver, Canada"
+      country: "Canada"
+      latitude: 49.2827
+      longitude: -123.1207
+      coordinate_accuracy: "city"
+
+- id: atlantic-canary
+  common_name: "Atlantic Canary"
+  scientific_name: "Serinus canaria"
+  observations:
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+- id: azores-bullfinch
+  common_name: "Azores Bullfinch"
+  scientific_name: "Pyrrhula murina"
+  observations:
+    - location: "São Miguel, Azores"
+      country: "Portugal"
+      latitude: 37.78
+      longitude: -25.50
+      coordinate_accuracy: "island"
+
+- id: azores-chaffinch
+  common_name: "Azores Chaffinch"
+  scientific_name: "Fringilla moreletti"
+  observations:
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+- id: bald-eagle
+  common_name: "Bald Eagle"
+  scientific_name: "Haliaeetus leucocephalus"
+  observations:
+    - location: "Salish Sea, Canada"
+      country: "Canada"
+      latitude: 48.75
+      longitude: -123.50
+      coordinate_accuracy: "regional"
+
+- id: barn-swallow
+  common_name: "Barn Swallow"
+  scientific_name: "Hirundo rustica"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: barnacle-goose
+  common_name: "Barnacle Goose"
+  scientific_name: "Branta leucopsis"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: bearded-vulture
+  common_name: "Bearded Vulture"
+  scientific_name: "Gypaetus barbatus"
+  observations:
+    - location: "Vallée de la Vésubie, France"
+      country: "France"
+      latitude: 44.05
+      longitude: 7.30
+      coordinate_accuracy: "regional"
+
+- id: black-headed-gull
+  common_name: "Black-headed Gull"
+  scientific_name: "Chroicocephalus ridibundus"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: black-redstart
+  common_name: "Black Redstart"
+  scientific_name: "Phoenicurus ochruros"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: black-swan
+  common_name: "Black Swan"
+  scientific_name: "Cygnus atratus"
+  introduced: true
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: black-tailed-godwit
+  common_name: "Black-tailed Godwit"
+  scientific_name: "Limosa limosa"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: black-winged-stilt
+  common_name: "Black-winged Stilt"
+  scientific_name: "Himantopus himantopus"
+  observations:
+    - location: "Porto-Vecchio, Corsica"
+      country: "France"
+      latitude: 41.591
+      longitude: 9.279
+      coordinate_accuracy: "city"
+
+- id: black-kite
+  common_name: "Black Kite"
+  scientific_name: "Milvus migrans"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: blue-tit
+  common_name: "Blue Tit"
+  scientific_name: "Cyanistes caeruleus"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: canada-goose
+  common_name: "Canada Goose"
+  scientific_name: "Branta canadensis"
+  introduced: true
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: carrion-crow
+  common_name: "Carrion Crow"
+  scientific_name: "Corvus corone"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: cettis-warbler
+  common_name: "Cetti's Warbler"
+  scientific_name: "Cettia cetti"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: cirl-bunting
+  common_name: "Cirl Bunting"
+  scientific_name: "Emberiza cirlus"
+  observations:
+    - location: "Col de Mela, Corsica"
+      country: "France"
+      latitude: 41.742
+      longitude: 9.171
+      coordinate_accuracy: "local"
+
+- id: coal-tit
+  common_name: "Coal Tit"
+  scientific_name: "Periparus ater"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: common-blackbird
+  common_name: "Common Blackbird"
+  scientific_name: "Turdus merula"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: common-buzzard
+  common_name: "Common Buzzard"
+  scientific_name: "Buteo buteo"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+      subspecies:
+        name: "rothschildi"
+        scientific_name: "Buteo buteo rothschildi"
+
+- id: common-chiffchaff
+  common_name: "Common Chiffchaff"
+  scientific_name: "Phylloscopus collybita"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: common-eider
+  common_name: "Common Eider"
+  scientific_name: "Somateria mollissima"
+  observations:
+    - location: "Silverdale, England"
+      country: "United Kingdom"
+      latitude: 54.17
+      longitude: -2.83
+      coordinate_accuracy: "local"
+
+- id: common-gull
+  common_name: "Common Gull"
+  scientific_name: "Larus canus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: common-kestrel
+  common_name: "Common Kestrel"
+  scientific_name: "Falco tinnunculus"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: common-linnet
+  common_name: "Common Linnet"
+  scientific_name: "Linaria cannabina"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: common-moorhen
+  common_name: "Common Moorhen"
+  scientific_name: "Gallinula chloropus"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: common-nightingale
+  common_name: "Common Nightingale"
+  scientific_name: "Luscinia megarhynchos"
+  observations:
+    - location: "Gorges du Gardon, France"
+      country: "France"
+      latitude: 43.94
+      longitude: 4.45
+      coordinate_accuracy: "regional"
+
+- id: common-pheasant
+  common_name: "Common Pheasant"
+  scientific_name: "Phasianus colchicus"
+  introduced: true
+  observations:
+    - location: "Torcello Island, Venezia"
+      country: "Italy"
+      latitude: 45.498
+      longitude: 12.418
+      coordinate_accuracy: "local"
+
+- id: common-pochard
+  common_name: "Common Pochard"
+  scientific_name: "Aythya ferina"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: common-raven
+  common_name: "Common Raven"
+  scientific_name: "Corvus corax"
+  observations:
+    - location: "Propriano, Corsica"
+      country: "France"
+      latitude: 41.676
+      longitude: 8.904
+      coordinate_accuracy: "city"
+
+- id: common-redshank
+  common_name: "Common Redshank"
+  scientific_name: "Tringa totanus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: common-shelduck
+  common_name: "Common Shelduck"
+  scientific_name: "Tadorna tadorna"
+  observations:
+    - location: "Porto-Vecchio, Corsica"
+      country: "France"
+      latitude: 41.591
+      longitude: 9.279
+      coordinate_accuracy: "city"
+
+- id: common-snipe
+  common_name: "Common Snipe"
+  scientific_name: "Gallinago gallinago"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: common-starling
+  common_name: "Common Starling"
+  scientific_name: "Sturnus vulgaris"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: common-swift
+  common_name: "Common Swift"
+  scientific_name: "Apus apus"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: common-tern
+  common_name: "Common Tern"
+  scientific_name: "Sterna hirundo"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: corys-shearwater
+  common_name: "Cory's Shearwater"
+  scientific_name: "Calonectris borealis"
+  observations:
+    - location: "Pico Island, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+- id: corsican-finch
+  common_name: "Corsican Finch"
+  scientific_name: "Carduelis corsicana"
+  observations:
+    - location: "Col de Mela, Corsica"
+      country: "France"
+      latitude: 41.742
+      longitude: 9.171
+      coordinate_accuracy: "local"
+
+- id: crested-tit
+  common_name: "Crested Tit"
+  scientific_name: "Lophophanes cristatus"
+  observations:
+    - location: "Saint-Jean-Cap-Ferrat, France"
+      country: "France"
+      latitude: 43.688
+      longitude: 7.333
+      coordinate_accuracy: "local"
+
+- id: dunnock
+  common_name: "Dunnock"
+  scientific_name: "Prunella modularis"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: eurasian-blackcap
+  common_name: "Eurasian Blackcap"
+  scientific_name: "Sylvia atricapilla"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: eurasian-bullfinch
+  common_name: "Eurasian Bullfinch"
+  scientific_name: "Pyrrhula pyrrhula"
+  observations:
+    - location: "Vosges Parc, France"
+      country: "France"
+      latitude: 48.13
+      longitude: 7.10
+      coordinate_accuracy: "regional"
+
+- id: eurasian-chaffinch
+  common_name: "Eurasian Chaffinch"
+  scientific_name: "Fringilla coelebs"
+  observations:
+    - location: "Gif-sur-Yvette, France"
+      country: "France"
+      latitude: 48.701
+      longitude: 2.134
+      coordinate_accuracy: "city"
+
+- id: eurasian-coot
+  common_name: "Eurasian Coot"
+  scientific_name: "Fulica atra"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: eurasian-collared-dove
+  common_name: "Eurasian Collared Dove"
+  scientific_name: "Streptopelia decaocto"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: eurasian-hobby
+  common_name: "Eurasian Hobby"
+  scientific_name: "Falco subbuteo"
+  observations:
+    - location: "Le Hohneck, France"
+      country: "France"
+      latitude: 48.037
+      longitude: 7.015
+      coordinate_accuracy: "local"
+
+- id: eurasian-jay
+  common_name: "Eurasian Jay"
+  scientific_name: "Garrulus glandarius"
+  observations:
+    - location: "Gif-sur-Yvette, France"
+      country: "France"
+      latitude: 48.701
+      longitude: 2.134
+      coordinate_accuracy: "city"
+
+- id: eurasian-magpie
+  common_name: "Eurasian Magpie"
+  scientific_name: "Pica pica"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: eurasian-nuthatch
+  common_name: "Eurasian Nuthatch"
+  scientific_name: "Sitta europaea"
+  observations:
+    - location: "Gif-sur-Yvette, France"
+      country: "France"
+      latitude: 48.701
+      longitude: 2.134
+      coordinate_accuracy: "city"
+
+- id: eurasian-spoonbill
+  common_name: "Eurasian Spoonbill"
+  scientific_name: "Platalea leucorodia"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: eurasian-teal
+  common_name: "Eurasian Teal"
+  scientific_name: "Anas crecca"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: eurasian-treecreeper
+  common_name: "Eurasian Treecreeper"
+  scientific_name: "Certhia familiaris"
+  observations:
+    - location: "Parc des Vosges, France"
+      country: "France"
+      latitude: 48.13
+      longitude: 7.10
+      coordinate_accuracy: "regional"
+
+- id: eurasian-wigeon
+  common_name: "Eurasian Wigeon"
+  scientific_name: "Mareca penelope"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: eurasian-wren
+  common_name: "Eurasian Wren"
+  scientific_name: "Troglodytes troglodytes"
+  observations:
+    - location: "Gif-sur-Yvette, France"
+      country: "France"
+      latitude: 48.701
+      longitude: 2.134
+      coordinate_accuracy: "city"
+
+- id: european-goldfinch
+  common_name: "European Goldfinch"
+  scientific_name: "Carduelis carduelis"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: european-greenfinch
+  common_name: "European Greenfinch"
+  scientific_name: "Chloris chloris"
+  observations:
+    - location: "Propriano, Corsica"
+      country: "France"
+      latitude: 41.676
+      longitude: 8.904
+      coordinate_accuracy: "city"
+
+- id: european-robin
+  common_name: "European Robin"
+  scientific_name: "Erithacus rubecula"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: european-serin
+  common_name: "European Serin"
+  scientific_name: "Serinus serinus"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: feral-pigeon-rock-dove
+  common_name: "Feral Pigeon / Rock Dove"
+  scientific_name: "Columba livia"
+  introduced: true
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: firecrest
+  common_name: "Firecrest"
+  scientific_name: "Regulus ignicapilla"
+  observations:
+    - location: "Col de Mela, Corsica"
+      country: "France"
+      latitude: 41.742
+      longitude: 9.171
+      coordinate_accuracy: "local"
+
+- id: garden-warbler
+  common_name: "Garden Warbler"
+  scientific_name: "Sylvia borin"
+  observations:
+    - location: "Gorges du Gardon, France"
+      country: "France"
+      latitude: 43.94
+      longitude: 4.45
+      coordinate_accuracy: "regional"
+
+- id: golden-oriole
+  common_name: "Golden Oriole"
+  scientific_name: "Oriolus oriolus"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: goldcrest
+  common_name: "Goldcrest"
+  scientific_name: "Regulus regulus"
+  observations:
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+- id: great-black-backed-gull
+  common_name: "Great Black-backed Gull"
+  scientific_name: "Larus marinus"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: great-cormorant
+  common_name: "Great Cormorant"
+  scientific_name: "Phalacrocorax carbo"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: great-crested-grebe
+  common_name: "Great Crested Grebe"
+  scientific_name: "Podiceps cristatus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: great-egret
+  common_name: "Great Egret"
+  scientific_name: "Ardea alba"
+  observations:
+    - location: "Porto-Vecchio, Corsica"
+      country: "France"
+      latitude: 41.591
+      longitude: 9.279
+      coordinate_accuracy: "city"
+
+- id: great-spotted-woodpecker
+  common_name: "Great Spotted Woodpecker"
+  scientific_name: "Dendrocopos major"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: great-tit
+  common_name: "Great Tit"
+  scientific_name: "Parus major"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: greater-flamingo
+  common_name: "Greater Flamingo"
+  scientific_name: "Phoenicopterus roseus"
+  observations:
+    - location: "Montpellier, France"
+      country: "France"
+      latitude: 43.611
+      longitude: 3.877
+      coordinate_accuracy: "city"
+
+- id: green-sandpiper
+  common_name: "Green Sandpiper"
+  scientific_name: "Tringa ochropus"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: green-woodpecker
+  common_name: "Green Woodpecker"
+  scientific_name: "Picus viridis"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: grey-heron
+  common_name: "Grey Heron"
+  scientific_name: "Ardea cinerea"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: grey-wagtail
+  common_name: "Grey Wagtail"
+  scientific_name: "Motacilla cinerea"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: greylag-goose
+  common_name: "Greylag Goose"
+  scientific_name: "Anser anser"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: herring-gull
+  common_name: "Herring Gull"
+  scientific_name: "Larus argentatus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: hooded-crow
+  common_name: "Hooded Crow"
+  scientific_name: "Corvus cornix"
+  observations:
+    - location: "Ajaccio, Corsica"
+      country: "France"
+      latitude: 41.919
+      longitude: 8.738
+      coordinate_accuracy: "city"
+
+- id: house-sparrow
+  common_name: "House Sparrow"
+  scientific_name: "Passer domesticus"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: indian-peafowl
+  common_name: "Indian Peafowl"
+  scientific_name: "Pavo cristatus"
+  introduced: true
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: jackdaw
+  common_name: "Jackdaw"
+  scientific_name: "Coloeus monedula"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: kingfisher
+  common_name: "Kingfisher"
+  scientific_name: "Alcedo atthis"
+  observations:
+    - location: "Torcello Island, Venezia"
+      country: "Italy"
+      latitude: 45.498
+      longitude: 12.418
+      coordinate_accuracy: "local"
+
+- id: lesser-black-backed-gull
+  common_name: "Lesser Black-backed Gull"
+  scientific_name: "Larus fuscus"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: little-egret
+  common_name: "Little Egret"
+  scientific_name: "Egretta garzetta"
+  observations:
+    - location: "Porto-Vecchio, Corsica"
+      country: "France"
+      latitude: 41.591
+      longitude: 9.279
+      coordinate_accuracy: "city"
+
+- id: long-tailed-tit
+  common_name: "Long-tailed Tit"
+  scientific_name: "Aegithalos caudatus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+      subspecies:
+        name: "rosaceus"
+        scientific_name: "Aegithalos caudatus rosaceus"
+
+- id: mallard
+  common_name: "Mallard"
+  scientific_name: "Anas platyrhynchos"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: mandarin-duck
+  common_name: "Mandarin Duck"
+  scientific_name: "Aix galericulata"
+  introduced: true
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: marsh-tit
+  common_name: "Marsh Tit"
+  scientific_name: "Poecile palustris"
+  observations:
+    - location: "Parc des Vosges, France"
+      country: "France"
+      latitude: 48.13
+      longitude: 7.10
+      coordinate_accuracy: "regional"
+
+- id: meadow-pipit
+  common_name: "Meadow Pipit"
+  scientific_name: "Anthus pratensis"
+  observations:
+    - location: "Parc des Vosges, Le Hohneck, France"
+      country: "France"
+      latitude: 48.037
+      longitude: 7.015
+      coordinate_accuracy: "local"
+
+- id: mute-swan
+  common_name: "Mute Swan"
+  scientific_name: "Cygnus olor"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: northern-lapwing
+  common_name: "Northern Lapwing"
+  scientific_name: "Vanellus vanellus"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: northern-shoveler
+  common_name: "Northern Shoveler"
+  scientific_name: "Spatula clypeata"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: northern-wheatear
+  common_name: "Northern Wheatear"
+  scientific_name: "Oenanthe oenanthe"
+  observations:
+    - location: "Mercantour, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: oystercatcher
+  common_name: "Oystercatcher"
+  scientific_name: "Haematopus ostralegus"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: peregrine-falcon
+  common_name: "Peregrine Falcon"
+  scientific_name: "Falco peregrinus"
+  observations:
+    - location: "Le Hohneck, France"
+      country: "France"
+      latitude: 48.037
+      longitude: 7.015
+      coordinate_accuracy: "local"
+
+- id: pied-crow
+  common_name: "Pied Crow"
+  scientific_name: "Corvus albus"
+  observations: []
+
+- id: pied-flycatcher
+  common_name: "Pied Flycatcher"
+  scientific_name: "Ficedula hypoleuca"
+  observations:
+    - location: "Le Hohneck, France"
+      country: "France"
+      latitude: 48.037
+      longitude: 7.015
+      coordinate_accuracy: "local"
+
+- id: pink-footed-goose
+  common_name: "Pink-footed Goose"
+  scientific_name: "Anser brachyrhynchus"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: red-kite
+  common_name: "Red Kite"
+  scientific_name: "Milvus milvus"
+  observations:
+    - location: "Zonza, Corsica"
+      country: "France"
+      latitude: 41.749
+      longitude: 9.171
+      coordinate_accuracy: "city"
+
+- id: red-rumped-swallow
+  common_name: "Red-rumped Swallow"
+  scientific_name: "Cecropis daurica"
+  observations:
+    - location: "Propriano, Corsica"
+      country: "France"
+      latitude: 41.676
+      longitude: 8.904
+      coordinate_accuracy: "city"
+
+- id: reunion-stonechat
+  common_name: "Réunion Stonechat"
+  scientific_name: "Saxicola tectes"
+  observations:
+    - location: "Chapelle de Cilaos, Réunion Island"
+      country: "France"
+      latitude: -21.135
+      longitude: 55.472
+      coordinate_accuracy: "local"
+
+- id: rose-ringed-parakeet
+  common_name: "Rose-ringed Parakeet"
+  scientific_name: "Psittacula krameri"
+  introduced: true
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: roseate-tern
+  common_name: "Roseate Tern"
+  scientific_name: "Sterna dougallii"
+  observations:
+    - location: "Pico Island, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+- id: rufous-hummingbird
+  common_name: "Rufous Hummingbird"
+  scientific_name: "Selasphorus rufus"
+  observations:
+    - location: "Vancouver Island, Canada"
+      country: "Canada"
+      latitude: 49.65
+      longitude: -125.45
+      coordinate_accuracy: "island"
+
+- id: sand-martin
+  common_name: "Sand Martin"
+  scientific_name: "Riparia riparia"
+  observations:
+    - location: "Propriano, Corsica"
+      country: "France"
+      latitude: 41.676
+      longitude: 8.904
+      coordinate_accuracy: "city"
+
+- id: short-toed-treecreeper
+  common_name: "Short-toed Treecreeper"
+  scientific_name: "Certhia brachydactyla"
+  observations:
+    - location: "Saint-Jean-Cap-Ferrat, France"
+      country: "France"
+      latitude: 43.688
+      longitude: 7.333
+      coordinate_accuracy: "local"
+
+- id: song-thrush
+  common_name: "Song Thrush"
+  scientific_name: "Turdus philomelos"
+  observations:
+    - location: "Parc des Vosges, France"
+      country: "France"
+      latitude: 48.13
+      longitude: 7.10
+      coordinate_accuracy: "regional"
+
+- id: spotted-flycatcher
+  common_name: "Spotted Flycatcher"
+  scientific_name: "Muscicapa striata"
+  observations:
+    - location: "Gif-sur-Yvette, France"
+      country: "France"
+      latitude: 48.701
+      longitude: 2.134
+      coordinate_accuracy: "city"
+
+- id: tree-pipit
+  common_name: "Tree Pipit"
+  scientific_name: "Anthus trivialis"
+  observations:
+    - location: "Mercantour, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: tufted-duck
+  common_name: "Tufted Duck"
+  scientific_name: "Aythya fuligula"
+  observations:
+    - location: "Southport, England"
+      country: "United Kingdom"
+      latitude: 53.645
+      longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: turtle-dove
+  common_name: "Turtle Dove"
+  scientific_name: "Streptopelia turtur"
+  observations:
+    - location: "Corsica"
+      country: "France"
+      latitude: 42.15
+      longitude: 9.05
+      coordinate_accuracy: "island"
+
+- id: water-pipit
+  common_name: "Water Pipit"
+  scientific_name: "Anthus spinoletta"
+  observations:
+    - location: "Mercantour, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
+- id: western-cattle-egret
+  common_name: "Western Cattle Egret"
+  scientific_name: "Ardea ibis"
+  observations:
+    - location: "Baie de la Somme, France"
+      country: "France"
+      latitude: 50.22
+      longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: western-house-martin
+  common_name: "Western House Martin"
+  scientific_name: "Delichon urbicum"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
+      coordinate_accuracy: "city"
+
+- id: white-stork
+  common_name: "White Stork"
+  scientific_name: "Ciconia ciconia"
+  observations:
+    - location: "Rust, Austria"
+      country: "Austria"
+      latitude: 47.801
+      longitude: 16.672
+      coordinate_accuracy: "city"
+
+- id: white-wagtail
+  common_name: "White Wagtail"
+  scientific_name: "Motacilla alba"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
+- id: white-tailed-tropicbird
+  common_name: "White-tailed Tropicbird"
+  scientific_name: "Phaethon lepturus"
+  observations:
+    - location: "Cilaos, Réunion Island"
+      country: "France"
+      latitude: -21.136
+      longitude: 55.471
+      coordinate_accuracy: "regional"
+
+- id: wood-pigeon
+  common_name: "Wood Pigeon"
+  scientific_name: "Columba palumbus"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+      subspecies:
+        name: "azorica"
+        scientific_name: "Columba palumbus azorica"
+
+- id: woodlark
+  common_name: "Woodlark"
+  scientific_name: "Lullula arborea"
+  observations:
+    - location: "Aiguilles de Bavella, Corsica"
+      country: "France"
+      latitude: 41.795
+      longitude: 9.224
+      coordinate_accuracy: "local"
+
+- id: yellow-legged-gull
+  common_name: "Yellow-legged Gull"
+  scientific_name: "Larus michahellis"
+  observations:
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+      subspecies:
+        name: "atlantis"
+        scientific_name: "Larus michahellis atlantis"

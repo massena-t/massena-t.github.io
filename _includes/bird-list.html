@@ -1,0 +1,29 @@
+{% assign birds = site.data.birds | sort: "common_name" %}
+<ul class="bird-life-list">
+  {% for bird in birds %}
+    <li class="bird-entry" id="{{ bird.id }}">
+      <div class="bird-entry-heading">
+        <strong>{{ bird.common_name }}</strong>
+        &mdash;
+        <em>{{ bird.scientific_name }}</em>
+        {% if bird.introduced %}
+          <span class="bird-tag">introduced / feral</span>
+        {% endif %}
+      </div>
+
+      <ul class="bird-observation-list">
+        {% for observation in bird.observations %}
+          <li>
+            <span class="bird-location">{{ observation.location }}</span>
+            {% if observation.subspecies %}
+              <span class="bird-subspecies">
+                &mdash; <strong>ssp. {{ observation.subspecies.name }}</strong>,
+                <em>{{ observation.subspecies.scientific_name }}</em>
+              </span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
