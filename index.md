@@ -27,7 +27,7 @@ Together with my coworker <strong>Leo Andeol</strong>, I received the <strong>Al
 <div class="publications">
 
   <div class="pub-card">
-    <h4>From SGD to Muon: Adaptive Optimization via Schatten-p Norms <span class="pub-venue">Pre-print, under review</span></h4>
+    <h4>From SGD to Muon: Adaptive Optimization via Schatten-p Norms <span class="pub-venue">NeurIPS 2026</span></h4>
     <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, M. Serrurier</p>
     <p class="pub-desc">Initially developed in this <a href="{% post_url 2026-02-19-schatten-muon %}">blog post</a>, we show that a first-order model of the LMO update rule's optimality is sufficient to match or improve upon the better-performing optimizer between Adam or Muon across diverse training tasks.</p>
     <a href="https://arxiv.org/abs/2605.19781" target="_blank" class="pub-link">Paper &rarr;</a>
