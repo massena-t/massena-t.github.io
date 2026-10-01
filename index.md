@@ -10,9 +10,20 @@ title: "Thomas Massena"
 
 ## News
 
-Our paper, <em>Fast and Flexible Robustness Certificates for Semantic Segmentation</em>, was accepted at <strong>ECCV 2026</strong>.
-
-Merged a PR on the <a href="https://github.com/google-deepmind/optax/pull/1602" target="_blank">Optax</a> repository containing coefficient presets and various normalization schemes for the Muon optimizer, along with the Turbo-Muon contributions.
+<ul class="news-list">
+  <li>
+    <time datetime="2026-09-25">September 25, 2026</time>
+    <p>Our paper, <em>From SGD to Muon: Adaptive Optimization via Schatten-p Norms</em>, was accepted at <strong>NeurIPS 2026</strong>.</p>
+  </li>
+  <li>
+    <time datetime="2026-07-23">July 23, 2026</time>
+    <p>Our paper, <em>Fast and Flexible Robustness Certificates for Semantic Segmentation</em>, was accepted at <strong>ECCV 2026</strong>.</p>
+  </li>
+  <li>
+    <time datetime="2026-02-22">February 22, 2026</time>
+    <p>Merged a PR on the <a href="https://github.com/google-deepmind/optax/pull/1602" target="_blank">Optax</a> repository containing coefficient presets and various normalization schemes for the Muon optimizer, along with the Turbo-Muon contributions.</p>
+  </li>
+</ul>
 
 ## Recorded Talks
 

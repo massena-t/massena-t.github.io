@@ -12,14 +12,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Personal website" />
 <meta property="og:description" content="Personal website" />
-<link rel="canonical" href="https://massena-t.github.io/" />
-<meta property="og:url" content="https://massena-t.github.io/" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Thomas Massena" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Thomas Massena" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Personal website","headline":"Thomas Massena","name":"Thomas Massena","url":"https://massena-t.github.io/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"Personal website","headline":"Thomas Massena","name":"Thomas Massena","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="stylesheet" href="/assets/css/custom.css">
@@ -66,9 +66,20 @@
 
 <h2 id="news">News</h2>
 
-<p>Our paper, <em>Fast and Flexible Robustness Certificates for Semantic Segmentation</em>, was accepted at <strong>ECCV 2026</strong>.</p>
-
-<p>Merged a PR on the <a href="https://github.com/google-deepmind/optax/pull/1602" target="_blank">Optax</a> repository containing coefficient presets and various normalization schemes for the Muon optimizer, along with the Turbo-Muon contributions.</p>
+<ul class="news-list">
+  <li>
+    <time datetime="2026-09-25">September 25, 2026</time>
+    <p>Our paper, <em>From SGD to Muon: Adaptive Optimization via Schatten-p Norms</em>, was accepted at <strong>NeurIPS 2026</strong>.</p>
+  </li>
+  <li>
+    <time datetime="2026-07-23">July 23, 2026</time>
+    <p>Our paper, <em>Fast and Flexible Robustness Certificates for Semantic Segmentation</em>, was accepted at <strong>ECCV 2026</strong>.</p>
+  </li>
+  <li>
+    <time datetime="2026-02-22">February 22, 2026</time>
+    <p>Merged a PR on the <a href="https://github.com/google-deepmind/optax/pull/1602" target="_blank">Optax</a> repository containing coefficient presets and various normalization schemes for the Muon optimizer, along with the Turbo-Muon contributions.</p>
+  </li>
+</ul>
 
 <h2 id="recorded-talks">Recorded Talks</h2>
 
@@ -83,7 +94,7 @@
 <div class="publications">
 
   <div class="pub-card">
-    <h4>From SGD to Muon: Adaptive Optimization via Schatten-p Norms <span class="pub-venue">Pre-print, under review</span></h4>
+    <h4>From SGD to Muon: Adaptive Optimization via Schatten-p Norms <span class="pub-venue">NeurIPS 2026</span></h4>
     <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, M. Serrurier</p>
     <p class="pub-desc">Initially developed in this <a href="/blog/2026/02/19/schatten-muon.html">blog post</a>, we show that a first-order model of the LMO update rule's optimality is sufficient to match or improve upon the better-performing optimizer between Adam or Muon across diverse training tasks.</p>
     <a href="https://arxiv.org/abs/2605.19781" target="_blank" class="pub-link">Paper &rarr;</a>
