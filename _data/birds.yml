@@ -71,6 +71,7 @@
 - id: bar-headed-goose
   common_name: "Bar-headed Goose"
   scientific_name: "Anser indicus"
+  introduced: true
   observations:
     - location: "Paris, France"
       country: "France"
