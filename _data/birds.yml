@@ -68,6 +68,16 @@
       longitude: -123.50
       coordinate_accuracy: "regional"
 
+- id: bar-headed-goose
+  common_name: "Bar-headed Goose"
+  scientific_name: "Anser indicus"
+  observations:
+    - location: "Paris, France"
+      country: "France"
+      latitude: 48.8566
+      longitude: 2.3522
+      coordinate_accuracy: "city"
+
 - id: barn-swallow
   common_name: "Barn Swallow"
   scientific_name: "Hirundo rustica"
@@ -139,6 +149,16 @@
       longitude: -3.010
       coordinate_accuracy: "city"
 
+- id: black-kite
+  common_name: "Black Kite"
+  scientific_name: "Milvus migrans"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
+
 - id: black-winged-stilt
   common_name: "Black-winged Stilt"
   scientific_name: "Himantopus himantopus"
@@ -149,15 +169,6 @@
       longitude: 9.279
       coordinate_accuracy: "city"
 
-- id: black-kite
-  common_name: "Black Kite"
-  scientific_name: "Milvus migrans"
-  observations:
-    - location: "Vert-le-Petit, France"
-      country: "France"
-      latitude: 48.551
-      longitude: 2.366
-      coordinate_accuracy: "local"
 
 - id: blue-tit
   common_name: "Blue Tit"
@@ -258,6 +269,16 @@
       longitude: 2.3522
       coordinate_accuracy: "city"
 
+- id: common-crane
+  common_name: "Common Crane"
+  scientific_name: "Grus grus"
+  observations:
+    - location: "Southwest of Öland"
+      country: "Sweden"
+      latitude: 56.45
+      longitude: 16.25
+      coordinate_accuracy: "regional"
+
 - id: common-eider
   common_name: "Common Eider"
   scientific_name: "Somateria mollissima"
@@ -267,6 +288,26 @@
       latitude: 54.17
       longitude: -2.83
       coordinate_accuracy: "local"
+
+- id: common-goldeneye
+  common_name: "Common Goldeneye"
+  scientific_name: "Bucephala clangula"
+  observations:
+    - location: "Falsterbo Peninsula"
+      country: "Sweden"
+      latitude: 55.3939
+      longitude: 12.8350
+      coordinate_accuracy: "locality"
+
+- id: common-greenshank
+  common_name: "Common Greenshank"
+  scientific_name: "Tringa nebularia"
+  observations:
+    - location: "Fågeltornet, Bunkeflostrand"
+      country: "Sweden"
+      latitude: 55.5453
+      longitude: 12.9029
+      coordinate_accuracy: "reserve"
 
 - id: common-gull
   common_name: "Common Gull"
@@ -359,6 +400,16 @@
       longitude: -3.010
       coordinate_accuracy: "city"
 
+- id: common-ringed-plover
+  common_name: "Common Ringed Plover"
+  scientific_name: "Charadrius hiaticula"
+  observations:
+    - location: "Byrums Raukar, Öland"
+      country: "Sweden"
+      latitude: 57.2252
+      longitude: 16.9548
+      coordinate_accuracy: "reserve"
+
 - id: common-shelduck
   common_name: "Common Shelduck"
   scientific_name: "Tadorna tadorna"
@@ -409,16 +460,6 @@
       longitude: 2.3522
       coordinate_accuracy: "city"
 
-- id: corys-shearwater
-  common_name: "Cory's Shearwater"
-  scientific_name: "Calonectris borealis"
-  observations:
-    - location: "Pico Island, Azores"
-      country: "Portugal"
-      latitude: 38.47
-      longitude: -28.40
-      coordinate_accuracy: "island"
-
 - id: corsican-finch
   common_name: "Corsican Finch"
   scientific_name: "Carduelis corsicana"
@@ -429,6 +470,17 @@
       longitude: 9.171
       coordinate_accuracy: "local"
 
+- id: corys-shearwater
+  common_name: "Cory's Shearwater"
+  scientific_name: "Calonectris borealis"
+  observations:
+    - location: "Pico Island, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
+
+
 - id: crested-tit
   common_name: "Crested Tit"
   scientific_name: "Lophophanes cristatus"
@@ -438,6 +490,16 @@
       latitude: 43.688
       longitude: 7.333
       coordinate_accuracy: "local"
+
+- id: dunlin
+  common_name: "Dunlin"
+  scientific_name: "Calidris alpina"
+  observations:
+    - location: "Fågeltornet, Bunkeflostrand"
+      country: "Sweden"
+      latitude: 55.5453
+      longitude: 12.9029
+      coordinate_accuracy: "reserve"
 
 - id: dunnock
   common_name: "Dunnock"
@@ -479,16 +541,6 @@
       longitude: 2.134
       coordinate_accuracy: "city"
 
-- id: eurasian-coot
-  common_name: "Eurasian Coot"
-  scientific_name: "Fulica atra"
-  observations:
-    - location: "Vert-le-Petit, France"
-      country: "France"
-      latitude: 48.551
-      longitude: 2.366
-      coordinate_accuracy: "local"
-
 - id: eurasian-collared-dove
   common_name: "Eurasian Collared Dove"
   scientific_name: "Streptopelia decaocto"
@@ -498,6 +550,16 @@
       latitude: 43.7102
       longitude: 7.2620
       coordinate_accuracy: "city"
+
+- id: eurasian-coot
+  common_name: "Eurasian Coot"
+  scientific_name: "Fulica atra"
+  observations:
+    - location: "Vert-le-Petit, France"
+      country: "France"
+      latitude: 48.551
+      longitude: 2.366
+      coordinate_accuracy: "local"
 
 - id: eurasian-hobby
   common_name: "Eurasian Hobby"
@@ -539,6 +601,16 @@
       longitude: 2.134
       coordinate_accuracy: "city"
 
+- id: eurasian-sparrowhawk
+  common_name: "Eurasian Sparrowhawk"
+  scientific_name: "Accipiter nisus"
+  observations:
+    - location: "Fågeltornet, Bunkeflostrand"
+      country: "Sweden"
+      latitude: 55.5453
+      longitude: 12.9029
+      coordinate_accuracy: "reserve"
+
 - id: eurasian-spoonbill
   common_name: "Eurasian Spoonbill"
   scientific_name: "Platalea leucorodia"
@@ -557,6 +629,16 @@
       country: "United Kingdom"
       latitude: 53.645
       longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: eurasian-tree-sparrow
+  common_name: "Eurasian Tree Sparrow"
+  scientific_name: "Passer montanus"
+  observations:
+    - location: "Malmö"
+      country: "Sweden"
+      latitude: 55.60587
+      longitude: 13.00073
       coordinate_accuracy: "city"
 
 - id: eurasian-treecreeper
@@ -598,6 +680,17 @@
       latitude: 48.8566
       longitude: 2.3522
       coordinate_accuracy: "city"
+
+- id: european-honey-buzzard
+  common_name: "European Honey Buzzard"
+  scientific_name: "Pernis apivorus"
+  observations:
+    - location: "Falsterbo Peninsula"
+      country: "Sweden"
+      latitude: 55.3939
+      longitude: 12.8350
+      coordinate_accuracy: "locality"
+
 
 - id: european-greenfinch
   common_name: "European Greenfinch"
@@ -650,6 +743,16 @@
       longitude: 9.171
       coordinate_accuracy: "local"
 
+- id: gadwall
+  common_name: "Gadwall"
+  scientific_name: "Mareca strepera"
+  observations:
+    - location: "Långe Jan, Öland"
+      country: "Sweden"
+      latitude: 56.1965
+      longitude: 16.3990
+      coordinate_accuracy: "landmark"
+
 - id: garden-warbler
   common_name: "Garden Warbler"
   scientific_name: "Sylvia borin"
@@ -659,6 +762,16 @@
       latitude: 43.94
       longitude: 4.45
       coordinate_accuracy: "regional"
+
+- id: goldcrest
+  common_name: "Goldcrest"
+  scientific_name: "Regulus regulus"
+  observations:
+    - location: "Pico, Azores"
+      country: "Portugal"
+      latitude: 38.47
+      longitude: -28.40
+      coordinate_accuracy: "island"
 
 - id: golden-oriole
   common_name: "Golden Oriole"
@@ -670,15 +783,16 @@
       longitude: 2.366
       coordinate_accuracy: "local"
 
-- id: goldcrest
-  common_name: "Goldcrest"
-  scientific_name: "Regulus regulus"
+
+- id: goosander
+  common_name: "Goosander"
+  scientific_name: "Mergus merganser"
   observations:
-    - location: "Pico, Azores"
-      country: "Portugal"
-      latitude: 38.47
-      longitude: -28.40
-      coordinate_accuracy: "island"
+    - location: "Byrums Raukar, Öland"
+      country: "Sweden"
+      latitude: 57.2252
+      longitude: 16.9548
+      coordinate_accuracy: "reserve"
 
 - id: great-black-backed-gull
   common_name: "Great Black-backed Gull"
@@ -800,6 +914,16 @@
       longitude: -3.010
       coordinate_accuracy: "city"
 
+- id: hen-harrier
+  common_name: "Hen Harrier"
+  scientific_name: "Circus cyaneus"
+  observations:
+    - location: "Fågeltornet, Bunkeflostrand"
+      country: "Sweden"
+      latitude: 55.5453
+      longitude: 12.9029
+      coordinate_accuracy: "reserve"
+
 - id: herring-gull
   common_name: "Herring Gull"
   scientific_name: "Larus argentatus"
@@ -871,6 +995,16 @@
       longitude: 1.57
       coordinate_accuracy: "regional"
 
+- id: lesser-spotted-woodpecker
+  common_name: "Lesser Spotted Woodpecker"
+  scientific_name: "Dryobates minor"
+  observations:
+    - location: "Réserve naturelle régionale du bassin de la Bièvre"
+      country: "France"
+      latitude: 48.7438
+      longitude: 2.28226
+      coordinate_accuracy: "reserve"
+
 - id: little-egret
   common_name: "Little Egret"
   scientific_name: "Egretta garzetta"
@@ -880,6 +1014,26 @@
       latitude: 41.591
       longitude: 9.279
       coordinate_accuracy: "city"
+
+- id: little-grebe
+  common_name: "Little Grebe"
+  scientific_name: "Tachybaptus ruficollis"
+  observations:
+    - location: "Malmö"
+      country: "Sweden"
+      latitude: 55.60587
+      longitude: 13.00073
+      coordinate_accuracy: "city"
+
+- id: little-stint
+  common_name: "Little Stint"
+  scientific_name: "Calidris minuta"
+  observations:
+    - location: "Byrums Raukar, Öland"
+      country: "Sweden"
+      latitude: 57.2252
+      longitude: 16.9548
+      coordinate_accuracy: "reserve"
 
 - id: long-tailed-tit
   common_name: "Long-tailed Tit"
@@ -975,6 +1129,16 @@
       longitude: 7.25
       coordinate_accuracy: "regional"
 
+- id: osprey
+  common_name: "Osprey"
+  scientific_name: "Pandion haliaetus"
+  observations:
+    - location: "Store Mosse National Park"
+      country: "Sweden"
+      latitude: 57.28489
+      longitude: 13.94381
+      coordinate_accuracy: "national_park"
+
 - id: oystercatcher
   common_name: "Oystercatcher"
   scientific_name: "Haematopus ostralegus"
@@ -995,10 +1159,15 @@
       longitude: 7.015
       coordinate_accuracy: "local"
 
-- id: pied-crow
-  common_name: "Pied Crow"
-  scientific_name: "Corvus albus"
-  observations: []
+- id: pied-avocet
+  common_name: "Pied Avocet"
+  scientific_name: "Recurvirostra avosetta"
+  observations:
+    - location: "Falsterbo Peninsula"
+      country: "Sweden"
+      latitude: 55.3939
+      longitude: 12.8350
+      coordinate_accuracy: "locality"
 
 - id: pied-flycatcher
   common_name: "Pied Flycatcher"
@@ -1018,6 +1187,16 @@
       country: "United Kingdom"
       latitude: 53.645
       longitude: -3.010
+      coordinate_accuracy: "city"
+
+- id: red-breasted-flycatcher
+  common_name: "Red-breasted Flycatcher"
+  scientific_name: "Ficedula parva"
+  observations:
+    - location: "Malmö"
+      country: "Sweden"
+      latitude: 55.60587
+      longitude: 13.00073
       coordinate_accuracy: "city"
 
 - id: red-kite
@@ -1049,6 +1228,16 @@
       latitude: -21.135
       longitude: 55.472
       coordinate_accuracy: "local"
+
+- id: rook
+  common_name: "Rook"
+  scientific_name: "Corvus frugilegus"
+  observations:
+    - location: "Malmö"
+      country: "Sweden"
+      latitude: 55.60587
+      longitude: 13.00073
+      coordinate_accuracy: "city"
 
 - id: rose-ringed-parakeet
   common_name: "Rose-ringed Parakeet"
@@ -1181,6 +1370,16 @@
       longitude: 7.2620
       coordinate_accuracy: "city"
 
+- id: western-marsh-harrier
+  common_name: "Western Marsh Harrier"
+  scientific_name: "Circus aeruginosus"
+  observations:
+    - location: "South of Malmö"
+      country: "Sweden"
+      latitude: 55.50
+      longitude: 13.00
+      coordinate_accuracy: "regional"
+
 - id: white-stork
   common_name: "White Stork"
   scientific_name: "Ciconia ciconia"
@@ -1190,6 +1389,26 @@
       latitude: 47.801
       longitude: 16.672
       coordinate_accuracy: "city"
+
+- id: white-tailed-eagle
+  common_name: "White-tailed Eagle"
+  scientific_name: "Haliaeetus albicilla"
+  observations:
+    - location: "Falsterbo Peninsula"
+      country: "Sweden"
+      latitude: 55.3939
+      longitude: 12.8350
+      coordinate_accuracy: "locality"
+
+- id: white-tailed-tropicbird
+  common_name: "White-tailed Tropicbird"
+  scientific_name: "Phaethon lepturus"
+  observations:
+    - location: "Cilaos, Réunion Island"
+      country: "France"
+      latitude: -21.136
+      longitude: 55.471
+      coordinate_accuracy: "regional"
 
 - id: white-wagtail
   common_name: "White Wagtail"
@@ -1201,15 +1420,26 @@
       longitude: 2.366
       coordinate_accuracy: "local"
 
-- id: white-tailed-tropicbird
-  common_name: "White-tailed Tropicbird"
-  scientific_name: "Phaethon lepturus"
+
+- id: willow-tit
+  common_name: "Willow Tit"
+  scientific_name: "Poecile montanus"
   observations:
-    - location: "Cilaos, Réunion Island"
-      country: "France"
-      latitude: -21.136
-      longitude: 55.471
-      coordinate_accuracy: "regional"
+    - location: "Store Mosse National Park"
+      country: "Sweden"
+      latitude: 57.28489
+      longitude: 13.94381
+      coordinate_accuracy: "national_park"
+
+- id: willow-warbler
+  common_name: "Willow Warbler"
+  scientific_name: "Phylloscopus trochilus"
+  observations:
+    - location: "Fågeltornet, Bunkeflostrand"
+      country: "Sweden"
+      latitude: 55.5453
+      longitude: 12.9029
+      coordinate_accuracy: "reserve"
 
 - id: wood-pigeon
   common_name: "Wood Pigeon"
@@ -1251,3 +1481,4 @@
       subspecies:
         name: "atlantis"
         scientific_name: "Larus michahellis atlantis"
+
