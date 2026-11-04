@@ -5,9 +5,6 @@ url: "https://massena-t.github.io"
 
 markdown: kramdown
 
-include:
-  - _data/segmentation_paper_eccv.pdf
-
 collections:
   various:
     output: true
