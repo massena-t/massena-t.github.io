@@ -55,7 +55,7 @@ Together with my coworker <strong>Leo Andeol</strong>, I received the <strong>Al
     <h4>Fast and Flexible Robustness Certificates for Semantic Segmentation <span class="pub-venue">ECCV 2026</span></h4>
     <p class="pub-authors"><em>T. Massena*</em>, C. Friedrich, F. Mamalet, M. Serrurier</p>
     <p class="pub-desc">We use Lipschitz neural networks to perform certifiably robust segmentation tasks on challenging datasets such as CityScapes. Our networks are approximately 600 to 2000 times more computationally efficient at inference time. We additionally develop a full framework for the certification of complex deep learning models under arbitrary threats under two different paradigms.</p>
-    <a href="https://arxiv.org/abs/2512.06010" target="_blank" class="pub-link">Paper &rarr;</a>
+    <a href="{{ '/_data/segmentation_paper_eccv.pdf' | relative_url }}" target="_blank" class="pub-link">Author-accepted PDF &rarr;</a><sup><a href="#eccv-version-note" id="eccv-version-ref" aria-label="Footnote 1">1</a></sup>
   </div>
 
   <div class="pub-card">
@@ -87,4 +87,10 @@ Together with my coworker <strong>Leo Andeol</strong>, I received the <strong>Al
     <a href="https://raw.githubusercontent.com/mlresearch/v266/main/assets/andeol25a/andeol25a.pdf" target="_blank" class="pub-link">Paper &rarr;</a>
   </div>
 
+</div>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="eccv-version-note">This is the author-accepted version of our ECCV 2026 paper, not the final published version. The final version is available via Springer. <a href="#eccv-version-ref" aria-label="Back to reference">&#8617;</a></li>
+  </ol>
 </div>

@@ -774,6 +774,16 @@
       longitude: -28.40
       coordinate_accuracy: "island"
 
+- id: golden-eagle
+  common_name: "Golden Eagle"
+  scientific_name: "Aquila chrysaetos"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
 - id: golden-oriole
   common_name: "Golden Oriole"
   scientific_name: "Oriolus oriolus"
@@ -915,6 +925,16 @@
       longitude: -3.010
       coordinate_accuracy: "city"
 
+- id: griffon-vulture
+  common_name: "Griffon Vulture"
+  scientific_name: "Gyps fulvus"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
+      coordinate_accuracy: "regional"
+
 - id: hen-harrier
   common_name: "Hen Harrier"
   scientific_name: "Circus cyaneus"
@@ -964,6 +984,16 @@
       country: "France"
       latitude: 48.8566
       longitude: 2.3522
+      coordinate_accuracy: "city"
+
+- id: indian-silverbill
+  common_name: "Indian Silverbill"
+  scientific_name: "Euodice malabarica"
+  observations:
+    - location: "Nice, France"
+      country: "France"
+      latitude: 43.7102
+      longitude: 7.2620
       coordinate_accuracy: "city"
 
 - id: jackdaw
@@ -1148,6 +1178,16 @@
       country: "France"
       latitude: 50.22
       longitude: 1.57
+      coordinate_accuracy: "regional"
+
+- id: pallid-swift
+  common_name: "Pallid Swift"
+  scientific_name: "Apus pallidus"
+  observations:
+    - location: "Mercantour Parc, France"
+      country: "France"
+      latitude: 44.15
+      longitude: 7.25
       coordinate_accuracy: "regional"
 
 - id: peregrine-falcon
